@@ -2,6 +2,28 @@ extends Node
 
 class_name Generator
 
+var ECN = "economies"
+var ORG = "organizations"
+var PPL = "people"
+var SKL = "skills"
+var ROL = "roles"
+var PRD = "products"
+var REC = "recipes"
+var CMP = "components"
+var PCS = "processes"
+	
+var dependencies = {
+	ECN:[ORG],
+	ORG:[PPL, PRD],
+	PPL:[ROL, SKL],
+	SKL:[PCS],
+	ROL:[],
+	PRD:[REC],
+	REC:[CMP, PCS],
+	CMP:[],
+	PCS:[],
+}
+
 var economies:Array=[]
 var organizations:Array=[]
 var people:Array=[]

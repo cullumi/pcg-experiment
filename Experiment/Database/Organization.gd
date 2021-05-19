@@ -21,7 +21,7 @@ func get_products(reqs:Dictionary={}):
 func get_members(reqs:Dictionary={}):
 	return ping("ping_members", reqs, members)
 
-func pinged(source, reqs):
+func pinged(source, reqs:Dictionary):
 	match (reqs.type):
 		"all":
 			source.add_org(self)

@@ -7,6 +7,16 @@ var results:Array
 func get_ping(key:String, reqs:Dictionary={}):
 	return ping("ping_"+key, reqs, [])
 
+func has_key(key:String):
+	return has_signal("ping_"+key)
+
+func get_keys():
+	var keys = []
+	for sig in get_signal_list():
+		if sig.name.begins_with("ping_"):
+			keys.append(sig.name.trim_prefix("ping_"))
+	return keys
+
 func ping(ping_signal, reqs, dest):
 	results = dest
 	results.clear()
@@ -16,7 +26,12 @@ func ping(ping_signal, reqs, dest):
 func pingback(result):
 	results.append(result)
 
-func pinged(source, reqs):
+func pinged(source, reqs:Dictionary):
+	if reqs.has("name"):
+		if (not req_met("name", reqs, [name])):return
+	for key in reqs.keys():
+		if (has_key(key)):
+			if (get_ping(key, {key:reqs[key]}).size() == 0): return
 	source.pingback(self)
 
 func req_met(key, reqs, source):

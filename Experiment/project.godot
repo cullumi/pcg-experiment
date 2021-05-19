@@ -9,60 +9,60 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "DBNode",
 "class": "Component",
 "language": "GDScript",
-"path": "res://Componenent.gd"
+"path": "res://Database/Componenent.gd"
 }, {
 "base": "Node",
 "class": "DBNode",
 "language": "GDScript",
-"path": "res://DBNode.gd"
+"path": "res://Database/DBNode.gd"
 }, {
 "base": "DBNode",
 "class": "Economy",
 "language": "GDScript",
-"path": "res://Economy.gd"
+"path": "res://Database/Economy.gd"
 }, {
 "base": "Node",
 "class": "Generator",
 "language": "GDScript",
-"path": "res://Generator.gd"
+"path": "res://Database/Generator.gd"
 }, {
 "base": "DBNode",
 "class": "Organization",
 "language": "GDScript",
-"path": "res://Organization.gd"
+"path": "res://Database/Organization.gd"
 }, {
 "base": "DBNode",
 "class": "Person",
 "language": "GDScript",
-"path": "res://Person.gd"
+"path": "res://Database/Person.gd"
 }, {
 "base": "DBNode",
 "class": "Process",
 "language": "GDScript",
-"path": "res://Process.gd"
+"path": "res://Database/Process.gd"
 }, {
 "base": "DBNode",
 "class": "Product",
 "language": "GDScript",
-"path": "res://Product.gd"
+"path": "res://Database/Product.gd"
 }, {
 "base": "DBNode",
 "class": "Recipe",
 "language": "GDScript",
-"path": "res://Recipe.gd"
+"path": "res://Database/Recipe.gd"
 }, {
-"base": "Node",
+"base": "DBNode",
 "class": "Role",
 "language": "GDScript",
-"path": "res://Role.gd"
+"path": "res://Database/Role.gd"
 }, {
 "base": "DBNode",
 "class": "Skill",
 "language": "GDScript",
-"path": "res://Skill.gd"
+"path": "res://Database/Skill.gd"
 } ]
 _global_script_class_icons={
 "Component": "",
@@ -86,7 +86,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Database="*res://Database.gd"
+Database="*res://Database/Database.gd"
 
 [rendering]
 

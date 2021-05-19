@@ -1,0 +1,93 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "Component",
+"language": "GDScript",
+"path": "res://Componenent.gd"
+}, {
+"base": "Node",
+"class": "DBNode",
+"language": "GDScript",
+"path": "res://DBNode.gd"
+}, {
+"base": "DBNode",
+"class": "Economy",
+"language": "GDScript",
+"path": "res://Economy.gd"
+}, {
+"base": "Node",
+"class": "Generator",
+"language": "GDScript",
+"path": "res://Generator.gd"
+}, {
+"base": "DBNode",
+"class": "Organization",
+"language": "GDScript",
+"path": "res://Organization.gd"
+}, {
+"base": "DBNode",
+"class": "Person",
+"language": "GDScript",
+"path": "res://Person.gd"
+}, {
+"base": "DBNode",
+"class": "Process",
+"language": "GDScript",
+"path": "res://Process.gd"
+}, {
+"base": "DBNode",
+"class": "Product",
+"language": "GDScript",
+"path": "res://Product.gd"
+}, {
+"base": "DBNode",
+"class": "Recipe",
+"language": "GDScript",
+"path": "res://Recipe.gd"
+}, {
+"base": "Node",
+"class": "Role",
+"language": "GDScript",
+"path": "res://Role.gd"
+}, {
+"base": "DBNode",
+"class": "Skill",
+"language": "GDScript",
+"path": "res://Skill.gd"
+} ]
+_global_script_class_icons={
+"Component": "",
+"DBNode": "",
+"Economy": "",
+"Generator": "",
+"Organization": "",
+"Person": "",
+"Process": "",
+"Product": "",
+"Recipe": "",
+"Role": "",
+"Skill": ""
+}
+
+[application]
+
+config/name="Experiment"
+run/main_scene="res://Menu.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Database="*res://Database.gd"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

@@ -18,18 +18,20 @@ func _ready():
 
 func get_dependencies(key):
 	var deps = generator.dependencies
-	var result:Array = []
-	var found:Array = []
-	get_dep_rec(key, result, found, deps)
+	var result:Dictionary = {}
+	get_dep_rec(key, result, deps)
 	return result
 
-func get_dep_rec(key, result:Array, found:Array, deps):
+func get_dep_rec(key, result:Dictionary, deps, path:Array=[]):
+	path.append(key)
 	if deps[key].empty():
-		if not found.has(key):
-			result.append(key)
-	found.append(key)
+		if not result.has(key):
+			result[key] = []
+		path.pop_front()
+		result[key].append(path)
+		return
 	for d in deps[key]:
-		get_dep_rec(d, result, found, deps)
+		get_dep_rec(d, result, deps, path.duplicate())
 
 func initialize():
 	var keys = db_dict.keys()

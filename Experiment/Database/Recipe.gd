@@ -13,10 +13,10 @@ func get_components(reqs:Dictionary={}):
 func get_processes(reqs:Dictionary={}):
 	return ping("ping_processes", reqs, processes)
 
-func pinged(source, reqs:Dictionary):
-	var keys = reqs.keys()
-	if keys.has("components"):
-		if (not req_met("components", reqs, get_components())):return
-	if keys.has("processes"):
-		if (not req_met("processes", reqs, get_processes())):return
-	source.pingback(self)
+#func pinged(source, reqs:Dictionary):
+#	var keys = reqs.keys()
+#	if keys.has("components"):
+#		if (get_components(reqs.components).size() == 0): return
+#	if keys.has("processes"):
+#		if (get_processes(reqs.processes).size() == 0): return
+#	source.pingback(self)

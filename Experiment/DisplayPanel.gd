@@ -1,26 +1,18 @@
 extends PanelContainer
 
+class_name DisplayPanel
+
 onready var label = $Label
 
 func update_display(type:String, reqs:Dictionary):
 	print("Updating Display")
 	var string = "Type: " + type + "\n"
-	string += "Settings: {"
-	for key in reqs.keys():
-		string += key + ": "
-		var req = reqs[key]
-		if req is Array:
-			string += "["
-			for r in req:
-				string += r + ", "
-			string.trim_suffix(", ")
-			string += "]"
-		else:
-			string += req
-		string += ", "
-		
-	string.trim_suffix(", ")
-	string += "}"
+	string += "Settings: "
+	string = Strings.conc_item(string, reqs)
+	string += "\n"
+	var out = Database.get_ping(type, reqs)
+	string = Strings.conc_item(string, out)
 	print(string)
-	print(Database.get_ping(type, reqs))
 	label.text = string
+
+

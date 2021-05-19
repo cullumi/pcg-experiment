@@ -27,15 +27,18 @@ func pingback(result):
 	results.append(result)
 
 func pinged(source, reqs:Dictionary):
+	print("Pinged...")
 	if reqs.has("name"):
 		if (not req_met("name", reqs, [name])):return
 	for key in reqs.keys():
 		if (has_key(key)):
-			if (get_ping(key, {key:reqs[key]}).size() == 0): return
+			if (get_ping(key, reqs[key]).size() == 0): return
+	print("Pinging Back...")
 	source.pingback(self)
 
 func req_met(key, reqs, source):
 	var sub_reqs = reqs[key]
 	for sub_req in sub_reqs:
+#		print("\""+sub_req+"\"")
 		if (not source.has(sub_req)): return false
 	return true

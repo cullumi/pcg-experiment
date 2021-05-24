@@ -2,6 +2,7 @@ extends DBNode
 
 class_name Economy
 
+# warning-ignore:unused_signal
 signal ping_orgs
 
 var orgs : Array

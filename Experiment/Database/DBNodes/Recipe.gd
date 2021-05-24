@@ -2,7 +2,9 @@ extends DBNode
 
 class_name Recipe
 
+# warning-ignore:unused_signal
 signal ping_components
+# warning-ignore:unused_signal
 signal ping_processes
 var components:Array
 var processes:Array
@@ -12,11 +14,3 @@ func get_components(reqs:Dictionary={}):
 
 func get_processes(reqs:Dictionary={}):
 	return ping("ping_processes", reqs, processes)
-
-#func pinged(source, reqs:Dictionary):
-#	var keys = reqs.keys()
-#	if keys.has("components"):
-#		if (get_components(reqs.components).size() == 0): return
-#	if keys.has("processes"):
-#		if (get_processes(reqs.processes).size() == 0): return
-#	source.pingback(self)

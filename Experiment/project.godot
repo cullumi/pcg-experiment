@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "DBNode",
 "class": "Component",
 "language": "GDScript",
-"path": "res://Database/Componenent.gd"
+"path": "res://Database/DBNodes/Componenent.gd"
 }, {
 "base": "Node",
 "class": "DBNode",
@@ -22,12 +22,12 @@ _global_script_classes=[ {
 "base": "PanelContainer",
 "class": "DisplayPanel",
 "language": "GDScript",
-"path": "res://DisplayPanel.gd"
+"path": "res://Database/Menu/DisplayPanel.gd"
 }, {
 "base": "DBNode",
 "class": "Economy",
 "language": "GDScript",
-"path": "res://Database/Economy.gd"
+"path": "res://Database/DBNodes/Economy.gd"
 }, {
 "base": "Node",
 "class": "Generator",
@@ -37,47 +37,47 @@ _global_script_classes=[ {
 "base": "PanelContainer",
 "class": "OptionsPanel",
 "language": "GDScript",
-"path": "res://OptionsPanel.gd"
+"path": "res://Database/Menu/OptionsPanel.gd"
 }, {
 "base": "DBNode",
 "class": "Organization",
 "language": "GDScript",
-"path": "res://Database/Organization.gd"
+"path": "res://Database/DBNodes/Organization.gd"
 }, {
 "base": "DBNode",
 "class": "Person",
 "language": "GDScript",
-"path": "res://Database/Person.gd"
+"path": "res://Database/DBNodes/Person.gd"
 }, {
 "base": "DBNode",
 "class": "Process",
 "language": "GDScript",
-"path": "res://Database/Process.gd"
+"path": "res://Database/DBNodes/Process.gd"
 }, {
 "base": "DBNode",
 "class": "Product",
 "language": "GDScript",
-"path": "res://Database/Product.gd"
+"path": "res://Database/DBNodes/Product.gd"
 }, {
 "base": "DBNode",
 "class": "Recipe",
 "language": "GDScript",
-"path": "res://Database/Recipe.gd"
+"path": "res://Database/DBNodes/Recipe.gd"
 }, {
 "base": "DBNode",
 "class": "Role",
 "language": "GDScript",
-"path": "res://Database/Role.gd"
+"path": "res://Database/DBNodes/Role.gd"
 }, {
 "base": "DBNode",
 "class": "Skill",
 "language": "GDScript",
-"path": "res://Database/Skill.gd"
+"path": "res://Database/DBNodes/Skill.gd"
 }, {
 "base": "Object",
 "class": "Strings",
 "language": "GDScript",
-"path": "res://Strings.gd"
+"path": "res://Utilities/Strings.gd"
 } ]
 _global_script_class_icons={
 "Component": "",
@@ -99,12 +99,27 @@ _global_script_class_icons={
 [application]
 
 config/name="Experiment"
-run/main_scene="res://Menu.tscn"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Database="*res://Database/Database.gd"
+DevCommands="*res://Utilities/DevCommands.gd"
+DatabaseMenu="*res://Database/Menu/DatabaseMenu.tscn"
+
+[input]
+
+reinitialize={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
+}
+restart={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":true,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [rendering]
 

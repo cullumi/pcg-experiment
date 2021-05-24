@@ -36,8 +36,19 @@ var processes:Array=[]
 
 var db_root
 
+onready var rng:RandomNumberGenerator = RandomNumberGenerator.new()
+
 func initialize(root):
 	db_root = root
+	economies=[]
+	organizations=[]
+	people=[]
+	skills=[]
+	roles=[]
+	products=[]
+	recipes=[]
+	components=[]
+	processes=[]
 	return {
 		"economies":economies,
 		"organizations":organizations,
@@ -50,8 +61,10 @@ func initialize(root):
 		"processes":processes,
 	}
 
-# Full
+# World Generator
+
 func generate():
+	rng.randomize()
 	generate_processes()
 	generate_components()
 	generate_recipes()
@@ -62,7 +75,8 @@ func generate():
 	generate_organizations()
 	generate_economy()
 
-# Generators
+# Single Generators
+
 func generate_economy():
 	var parent = add_root_child("Economies")
 	var economy = Economy.new()
@@ -71,6 +85,8 @@ func generate_economy():
 	economies.append(economy)
 	for org in organizations:
 		economy.connect("ping_orgs", org, "pinged")
+
+# Bulk Generators
 
 func generate_organizations():
 	var parent = add_root_child("Organizations")
@@ -82,7 +98,8 @@ func generate_organizations():
 		organizations.append(org)
 		for r in rands_range(0, roles.size(), 2):
 			org.connect("ping_roles", roles[r], "pinged")
-		org.connect("ping_products", products[rand_range(0, products.size())], "pinged")
+		var rand = randi_range(0, products.size())
+		org.connect("ping_products", products[rand], "pinged")
 
 func generate_people():
 	var parent = add_root_child("People")
@@ -116,12 +133,18 @@ func generate_products():
 	var parent = add_root_child("Products")
 	var p_names = ["Banana", "Television", "Clay Pot", "Energy Drink"]
 	var rpp:int = recipes.size() / p_names.size()
+	var r_idxs:Array = range(0, recipes.size())
 	for p in range(0, p_names.size()):
 		var product = Product.new()
+		product.name = p_names[p]
 		parent.add_child(product)
 		products.append(product)
+# warning-ignore:unused_variable
 		for r in range(0, rpp):
-			product.connect("ping_recipes", recipes[p+r], "pinged")
+			var rand = randi_range(0, r_idxs.size())
+			var idx = r_idxs[rand]
+			r_idxs.remove(rand)
+			product.connect("ping_recipes", recipes[idx], "pinged")
 
 func generate_recipes():
 	var parent = add_root_child("Recipes")
@@ -158,9 +181,13 @@ func add_root_child(c_name):
 	db_root.add_child(child)
 	return child
 
+func randi_range(from, to):
+	return rng.randi_range(from, to-1)
+
 func rands_range(from, to, count):
 	var rands:Array = []
 	while (rands.size() < count):
-		var rand:int = rand_range(from, to)
+# warning-ignore:narrowing_conversion
+		var rand:int = randi_range(from, to)
 		if (not rands.has(rand)): rands.append(rand)
 	return rands

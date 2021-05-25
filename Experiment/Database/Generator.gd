@@ -11,28 +11,29 @@ var PRD = "products"
 var REC = "recipes"
 var CMP = "components"
 var PCS = "processes"
-	
-var dependencies = {
-	ECN:[ORG],
-	ORG:[PPL, PRD],
-	PPL:[ROL, SKL],
-	SKL:[PCS],
-	ROL:[],
-	PRD:[REC],
-	REC:[CMP, PCS],
-	CMP:[],
-	PCS:[],
+var TYPE = "type"
+
+var structure = {
+	ECN:{TYPE:Economy},
+	ORG:{TYPE:Organization},
+	PPL:{TYPE:Person},
+	SKL:{TYPE:Skill},
+	ROL:{TYPE:Role},
+	PRD:{TYPE:Product},
+	REC:{TYPE:Recipe},
+	CMP:{TYPE:Component},
+	PCS:{TYPE:Process},
 }
 
-var economies:Array=[]
-var organizations:Array=[]
-var people:Array=[]
-var skills:Array=[]
-var roles:Array=[]
-var products:Array=[]
-var recipes:Array=[]
-var components:Array=[]
-var processes:Array=[]
+var economies:Array
+var organizations:Array
+var people:Array
+var skills:Array
+var roles:Array
+var products:Array
+var recipes:Array
+var components:Array
+var processes:Array
 
 var db_root
 
@@ -50,16 +51,30 @@ func initialize(root):
 	components=[]
 	processes=[]
 	return {
-		"economies":economies,
-		"organizations":organizations,
-		"people":people,
-		"skills":skills,
-		"roles":roles,
-		"products":products,
-		"recipes":recipes,
-		"components":components,
-		"processes":processes,
+		ECN:economies,
+		ORG:organizations,
+		PPL:people,
+		SKL:skills,
+		ROL:roles,
+		PRD:products,
+		REC:recipes,
+		CMP:components,
+		PCS:processes,
 	}
+
+# Generate Dependencies
+
+func generate_dependencies(dest=structure):
+	for key in dest.keys():
+		var type = dest[key].type
+		var test_node = type.new()
+		var signals = test_node.get_signal_list()
+		dest[key].dependencies = []
+		for sig in signals:
+			var sig_name:String = sig.name
+			if sig_name.begins_with("ping_"):
+				dest[key].dependencies.append(sig_name.trim_prefix("ping_"))
+		test_node.queue_free()
 
 # World Generator
 
@@ -74,6 +89,7 @@ func generate():
 	generate_people()
 	generate_organizations()
 	generate_economy()
+	generate_dependencies()
 
 # Single Generators
 

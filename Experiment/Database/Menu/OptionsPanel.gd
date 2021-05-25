@@ -83,18 +83,20 @@ func set_option(opt_index:int, setting:String):
 func erase_req(setting, option):
 	var paths = dependencies[setting]
 	for path in paths:
+		print(path)
 		rec_erase_req(path, 0, reqs)
 
 func rec_erase_req(path:Array, cur_index:int, current_dict:Dictionary):
-	if cur_index >= path.size():
-		current_dict.clear()
-		return
-	var key = path[cur_index]
-	if (current_dict.has(key)):
-		rec_erase_req(path, cur_index+1, current_dict[key])
-		if current_dict[key].empty():
-# warning-ignore:return_value_discarded
-			current_dict.erase(key)
+	if cur_index+1 >= path.size():
+		current_dict.erase(path[cur_index])
+#		current_dict.clear()
+	else:
+		var key = path[cur_index]
+		if (current_dict.has(key)):
+			rec_erase_req(path, cur_index+1, current_dict[key])
+			if current_dict[key].empty():
+	# warning-ignore:return_value_discarded
+				current_dict.erase(key)
 
 func set_req(setting, option):
 	var paths = dependencies[setting]
@@ -102,8 +104,13 @@ func set_req(setting, option):
 	var current_dict
 	for path in paths:
 		current_dict = start_dict
+		var p:int = 0
 		for step in path:
-			if (not current_dict.has(step)):
-				current_dict[step] = {}
-			current_dict = current_dict[step]
-		current_dict["name"] = [option]
+			p += 1
+			if (p < path.size()):
+				if (not current_dict.has(step)):
+					current_dict[step] = {}
+				current_dict = current_dict[step]
+			else:
+				current_dict[step] = [option]
+#		current_dict["name"] = [option]

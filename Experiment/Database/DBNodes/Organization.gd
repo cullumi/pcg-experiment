@@ -14,7 +14,7 @@ var roles:Array
 signal ping_products
 var products:Array
 # warning-ignore:unused_signal
-signal ping_members
+signal ping_people
 var members:Array
 
 func _init():

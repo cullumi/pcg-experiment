@@ -25,21 +25,25 @@ func initialize():
 	generate_pings()
 
 func get_dependencies(key):
-	var deps = generator.dependencies
+	print("Getting Dependencies")
+	var struct:Dictionary = generator.structure
 	var result:Dictionary = {}
-	get_dep_rec(key, result, deps)
+	get_dep_rec(key, result, struct)
 	return result
 
-func get_dep_rec(key, result:Dictionary, deps, path:Array=[]):
+func get_dep_rec(key, result:Dictionary, struct:Dictionary, path:Array=[]):
+	# Prepare Path
 	path.append(key)
-	if deps[key].empty():
-		if not result.has(key):
-			result[key] = []
-		path.pop_front()
-		result[key].append(path)
-		return
-	for d in deps[key]:
-		get_dep_rec(d, result, deps, path.duplicate())
+	var link_path = path.duplicate()
+	path.pop_front()
+	path.append("name")
+	# Add Path to Result
+	if not result.has(key):
+		result[key] = []
+	result[key].append(path)
+	# Dive into Dependencies
+	for d in struct[key].dependencies:
+		get_dep_rec(d, result, struct, link_path.duplicate())
 
 func generate_pings():
 	var keys = db_dict.keys()

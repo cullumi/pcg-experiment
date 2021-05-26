@@ -40,3 +40,9 @@ func _on_Tabs_reposition_active_tab_request(idx_to):
 func _on_Dropdown_item_selected(key):
 	add_tab(key)
 
+func _on_Tabs_tab_close(tab_idx):
+	if (tabs.get_tab_count() > 1):
+		displayed_keys.remove(tab_idx)
+		saved_filters.remove(tab_idx)
+		tabs.remove_tab(tab_idx)
+		_on_Tabs_tab_changed(tabs.current_tab)

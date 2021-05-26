@@ -41,4 +41,5 @@ toggle_mode = false
 
 [connection signal="reposition_active_tab_request" from="Tabs" to="." method="_on_Tabs_reposition_active_tab_request"]
 [connection signal="tab_changed" from="Tabs" to="." method="_on_Tabs_tab_changed"]
+[connection signal="tab_close" from="Tabs" to="." method="_on_Tabs_tab_close"]
 [connection signal="item_selected" from="Dropdown" to="." method="_on_Dropdown_item_selected"]

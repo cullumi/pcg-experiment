@@ -27,7 +27,7 @@ func add_content(c_name:String, c_arr:Array):
 		var separator:HSeparator = HSeparator.new()
 		container.add_child(separator)
 		separators.append(separator)
-	var c_value = Strings.conc_array("", c_arr)
+	var c_value = Strings.from_array(c_arr)
 	var content = content_scene.instance()
 	content.initialize(c_name, c_value)
 	container.add_child(content)

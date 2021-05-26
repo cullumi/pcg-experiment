@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Database/Menu/DBNodeDisplay.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Database/Menu/DisplayPanel.gd" type="Script" id=3]
+[ext_resource path="res://Utilities/UI/Displays/DisplayPanel.gd" type="Script" id=1]
+[ext_resource path="res://Utilities/UI/Displays/NodeDisplay.tscn" type="PackedScene" id=2]
 
 [node name="display_panel" type="PanelContainer"]
 margin_top = 18.0
@@ -9,7 +9,7 @@ margin_right = 984.0
 margin_bottom = 560.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 3 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -50,7 +50,8 @@ size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="."]
 margin_left = 7.0
-margin_top = 264.0
+margin_top = 521.0
 margin_right = 977.0
-margin_bottom = 278.0
+margin_bottom = 535.0
+size_flags_vertical = 8
 text = "Test"

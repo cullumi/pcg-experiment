@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Utilities/Dropdown.gd" type="Script" id=1]
+[ext_resource path="res://Utilities/UI/Options/Dropdown.gd" type="Script" id=1]
 
 [node name="Dropdown" type="HBoxContainer"]
 margin_right = 53.0
@@ -27,11 +27,11 @@ margin_bottom = 20.0
 
 [node name="Control" type="Control" parent="."]
 margin_left = 45.0
-margin_right = 45.0
+margin_right = 61.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 
 [node name="VSeparator2" type="VSeparator" parent="."]
-margin_left = 49.0
-margin_right = 53.0
+margin_left = 65.0
+margin_right = 69.0
 margin_bottom = 20.0

@@ -19,15 +19,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Database/DBNode.gd"
 }, {
+"base": "Object",
+"class": "Dicts",
+"language": "GDScript",
+"path": "res://Utilities/Helpers/Dicts.gd"
+}, {
 "base": "PanelContainer",
 "class": "DisplayPanel",
 "language": "GDScript",
-"path": "res://Database/Menu/DisplayPanel.gd"
+"path": "res://Utilities/UI/Displays/DisplayPanel.gd"
 }, {
 "base": "HBoxContainer",
 "class": "Dropdown",
 "language": "GDScript",
-"path": "res://Utilities/Dropdown.gd"
+"path": "res://Utilities/UI/Options/Dropdown.gd"
 }, {
 "base": "DBNode",
 "class": "Economy",
@@ -39,10 +44,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Database/Generator.gd"
 }, {
+"base": "HBoxContainer",
+"class": "NavTabs",
+"language": "GDScript",
+"path": "res://Utilities/UI/Options/NavTabs.gd"
+}, {
 "base": "PanelContainer",
 "class": "OptionsPanel",
 "language": "GDScript",
-"path": "res://Database/Menu/OptionsPanel.gd"
+"path": "res://Utilities/UI/Options/OptionsPanel.gd"
 }, {
 "base": "DBNode",
 "class": "Organization",
@@ -82,20 +92,17 @@ _global_script_classes=[ {
 "base": "Object",
 "class": "Strings",
 "language": "GDScript",
-"path": "res://Utilities/Strings.gd"
-}, {
-"base": "Tabs",
-"class": "TabsPanel",
-"language": "GDScript",
-"path": "res://Database/Menu/TypeTabs.gd"
+"path": "res://Utilities/Helpers/Strings.gd"
 } ]
 _global_script_class_icons={
 "Component": "",
 "DBNode": "",
+"Dicts": "",
 "DisplayPanel": "",
 "Dropdown": "",
 "Economy": "",
 "Generator": "",
+"NavTabs": "",
 "OptionsPanel": "",
 "Organization": "",
 "Person": "",
@@ -104,8 +111,7 @@ _global_script_class_icons={
 "Recipe": "",
 "Role": "",
 "Skill": "",
-"Strings": "",
-"TabsPanel": ""
+"Strings": ""
 }
 
 [application]
@@ -134,6 +140,11 @@ reinitialize={
 restart={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":true,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
+}
+toggle_db_menu={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":96,"unicode":0,"echo":false,"script":null)
  ]
 }
 

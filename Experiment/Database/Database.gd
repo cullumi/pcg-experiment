@@ -62,3 +62,33 @@ func clear_database():
 			disconnect("ping_"+key, node, "pinged")			
 			node.queue_free()
 	db_dict.clear()
+
+# Req Recursion
+
+func generate_ping_reqs(filter, dependencies):
+	var reqs = {}
+	for key in filter.keys():
+		addset_req(key, filter[key], reqs, dependencies)
+	return reqs
+	
+func erase_req(key, option, reqs:Dictionary, dependencies:Dictionary):
+	var paths = dependencies[key]
+	for path in paths:
+		print(path)
+		Dicts.recursive_erase(path, 0, reqs)
+
+func addset_req(key, option, reqs:Dictionary, dependencies:Dictionary):
+	var paths = dependencies[key]
+	var start_dict = reqs
+	var current_dict
+	for path in paths:
+		current_dict = start_dict
+		var p:int = 0
+		for step in path:
+			p += 1
+			if (p < path.size()):
+				if (not current_dict.has(step)):
+					current_dict[step] = {}
+				current_dict = current_dict[step]
+			else:
+				current_dict[step] = [option]

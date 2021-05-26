@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Database/Menu/DisplayPanel.gd"
 }, {
+"base": "HBoxContainer",
+"class": "Dropdown",
+"language": "GDScript",
+"path": "res://Utilities/Dropdown.gd"
+}, {
 "base": "DBNode",
 "class": "Economy",
 "language": "GDScript",
@@ -78,11 +83,17 @@ _global_script_classes=[ {
 "class": "Strings",
 "language": "GDScript",
 "path": "res://Utilities/Strings.gd"
+}, {
+"base": "Tabs",
+"class": "TabsPanel",
+"language": "GDScript",
+"path": "res://Database/Menu/TypeTabs.gd"
 } ]
 _global_script_class_icons={
 "Component": "",
 "DBNode": "",
 "DisplayPanel": "",
+"Dropdown": "",
 "Economy": "",
 "Generator": "",
 "OptionsPanel": "",
@@ -93,7 +104,8 @@ _global_script_class_icons={
 "Recipe": "",
 "Role": "",
 "Skill": "",
-"Strings": ""
+"Strings": "",
+"TabsPanel": ""
 }
 
 [application]
@@ -107,6 +119,10 @@ config/icon="res://icon.png"
 Database="*res://Database/Database.gd"
 DevCommands="*res://Utilities/DevCommands.gd"
 DatabaseMenu="*res://Database/Menu/DatabaseMenu.tscn"
+
+[display]
+
+window/stretch/aspect="keep"
 
 [input]
 

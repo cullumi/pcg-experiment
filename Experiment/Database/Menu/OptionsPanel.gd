@@ -2,7 +2,10 @@ extends PanelContainer
 
 class_name OptionsPanel
 
-onready var container = $HBoxContainer
+export (PackedScene) var dropdown_scene
+export (bool) var types_builtin
+
+onready var container = $GridContainer
 var type_dropdown
 var dropdowns:Array
 
@@ -14,10 +17,12 @@ var types:Array = []
 var settings:Dictionary = {}
 var dependencies:Dictionary = {}
 
-func initialize():
-	types = Database.get_keys()
-	type_dropdown = add_dropdown("type", types, "set_type")
-	type = types[0]
+func initialize(display):
+	if types_builtin:
+		types = Database.get_keys()
+		type_dropdown = add_dropdown("type", types, "set_type")
+		type = types[0]
+	connect("settings_changed", display, "update_display")
 	update_settings()
 
 func update_settings():
@@ -43,28 +48,20 @@ func clear_dropdowns():
 	dropdowns.clear()
 
 func add_dropdown(key, op_keys, select_signal, binds=[]):
-	var hbox = HBoxContainer.new()
-	var lbl = Label.new()
-	var lsptr = VSeparator.new()
-	var rsptr = VSeparator.new()
-	var dd:OptionButton = OptionButton.new()
-	lbl.text = key
-	for op in op_keys:
-		dd.add_item(op)
+	var dropdown:Dropdown = dropdown_scene.instance()
+	dropdown.initialize(key, op_keys)
 # warning-ignore:return_value_discarded
-	dd.connect("item_selected", self, select_signal, binds)
-	container.add_child(hbox)
-	hbox.add_child(lsptr)
-	hbox.add_child(lbl)
-	hbox.add_child(dd)
-	hbox.add_child(rsptr)
-	return hbox
+	dropdown.connect("item_selected", self, select_signal, binds)
+	container.add_child(dropdown)
+	return dropdown
 
 
 # Signal Triggers
 
-func set_type(type_index:int):
-	var new_type = types[type_index]
+func set_type(type_id):
+	var new_type = type_id
+	if (type_id is int):
+		new_type = types[type_id]
 	type = new_type
 	update_settings()
 
@@ -88,6 +85,7 @@ func erase_req(setting, option):
 
 func rec_erase_req(path:Array, cur_index:int, current_dict:Dictionary):
 	if cur_index+1 >= path.size():
+# warning-ignore:return_value_discarded
 		current_dict.erase(path[cur_index])
 #		current_dict.clear()
 	else:

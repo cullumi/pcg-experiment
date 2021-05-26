@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Utilities/Dropdown.gd" type="Script" id=1]
+
+[node name="Dropdown" type="HBoxContainer"]
+margin_right = 53.0
+margin_bottom = 20.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator" type="VSeparator" parent="."]
+margin_right = 4.0
+margin_bottom = 20.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 3.0
+margin_right = 8.0
+margin_bottom = 17.0
+
+[node name="OptionButton" type="OptionButton" parent="."]
+margin_left = 12.0
+margin_right = 41.0
+margin_bottom = 20.0
+
+[node name="Control" type="Control" parent="."]
+margin_left = 45.0
+margin_right = 45.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="VSeparator2" type="VSeparator" parent="."]
+margin_left = 49.0
+margin_right = 53.0
+margin_bottom = 20.0

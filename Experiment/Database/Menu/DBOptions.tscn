@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Database/Menu/OptionsPanel.gd" type="Script" id=1]
+[ext_resource path="res://Utilities/Dropdown.tscn" type="PackedScene" id=2]
+
+[node name="option_panel" type="PanelContainer"]
+margin_right = 984.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+dropdown_scene = ExtResource( 2 )
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 977.0
+margin_bottom = 7.0
+columns = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GridContainer"]
+visible = false
+margin_left = 429.0
+margin_right = 541.0
+margin_bottom = 24.0
+
+[node name="VSeparator" type="VSeparator" parent="GridContainer/HBoxContainer"]
+margin_right = 4.0
+margin_bottom = 24.0
+
+[node name="TypeLabel" type="Label" parent="GridContainer/HBoxContainer"]
+margin_left = 8.0
+margin_top = 5.0
+margin_right = 42.0
+margin_bottom = 19.0
+text = "Type:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TypeEdit" type="LineEdit" parent="GridContainer/HBoxContainer"]
+margin_left = 46.0
+margin_right = 104.0
+margin_bottom = 24.0
+expand_to_text_length = true
+
+[node name="Spacer" type="Control" parent="GridContainer/HBoxContainer"]
+margin_left = 46.0
+margin_right = 86.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="VSeparator3" type="VSeparator" parent="GridContainer/HBoxContainer"]
+margin_left = 108.0
+margin_right = 112.0
+margin_bottom = 24.0
+
+[node name="Dropdown" parent="GridContainer" instance=ExtResource( 2 )]
+visible = false
+
+[connection signal="text_entered" from="GridContainer/HBoxContainer/TypeEdit" to="." method="set_type"]

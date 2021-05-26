@@ -100,7 +100,7 @@ func generate_economy():
 	parent.add_child(economy)
 	economies.append(economy)
 	for org in organizations:
-		economy.connect("ping_orgs", org, "pinged")
+		economy.connect("ping_organizations", org, "pinged")
 
 # Bulk Generators
 

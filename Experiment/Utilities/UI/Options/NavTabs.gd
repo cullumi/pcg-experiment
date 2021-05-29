@@ -10,11 +10,15 @@ signal tab_changed
 var displayed_keys:Array
 var saved_filters:Array
 var stored_keys:Array
+var stored_filters:Array
 
 func initialize(keys:Array, filters:Array=[]):
 	stored_keys = keys
+	stored_filters = filters
+	for i in range(0, keys.size()-filters.size()):
+		filters.append({})
 	dropdown.initialize("+", stored_keys)
-	add_tab(stored_keys[0])
+	add_tab(stored_keys[0], stored_filters[0])
 
 func save_filter(filter, idx:int=tabs.current_tab):
 	saved_filters[idx] = filter.duplicate()
@@ -38,7 +42,7 @@ func _on_Tabs_reposition_active_tab_request(idx_to):
 	saved_filters.insert(idx_to, filter)
 
 func _on_Dropdown_item_selected(key):
-	add_tab(key)
+	add_tab(key, stored_filters[stored_keys.find(key)])
 
 func _on_Tabs_tab_close(tab_idx):
 	if (tabs.get_tab_count() > 1):

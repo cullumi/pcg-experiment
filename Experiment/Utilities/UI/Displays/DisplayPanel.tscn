@@ -29,6 +29,7 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 963.0
 margin_bottom = 521.0
+focus_mode = 1
 size_flags_horizontal = 3
 follow_focus = true
 scroll_horizontal_enabled = false

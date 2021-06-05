@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Utilities/UI/Interactors/EditableContentDisplay.gd" type="Script" id=1]
+
+[node name="EditableContent" type="HBoxContainer"]
+margin_top = 52.0
+margin_right = 956.0
+margin_bottom = 66.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="."]
+margin_right = 948.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+align = 1
+valign = 1
+
+[node name="VSeparator" type="VSeparator" parent="."]
+margin_left = 952.0
+margin_right = 956.0
+margin_bottom = 14.0
+
+[node name="ValueEdit" type="LineEdit" parent="."]
+visible = false
+margin_left = 200.0
+margin_right = 956.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+align = 1
+
+[connection signal="text_entered" from="ValueEdit" to="." method="_on_ValueEdit_text_entered"]

@@ -44,10 +44,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Database/Generator.gd"
 }, {
+"base": "PanelContainer",
+"class": "InteractionPanel",
+"language": "GDScript",
+"path": "res://Utilities/UI/Interactors/InteractionPanel.gd"
+}, {
 "base": "HBoxContainer",
 "class": "NavTabs",
 "language": "GDScript",
 "path": "res://Utilities/UI/Options/NavTabs.gd"
+}, {
+"base": "Control",
+"class": "NodeDisplay",
+"language": "GDScript",
+"path": "res://Utilities/UI/Displays/NodeDisplay.gd"
 }, {
 "base": "PanelContainer",
 "class": "OptionsPanel",
@@ -102,7 +112,9 @@ _global_script_class_icons={
 "Dropdown": "",
 "Economy": "",
 "Generator": "",
+"InteractionPanel": "",
 "NavTabs": "",
+"NodeDisplay": "",
 "OptionsPanel": "",
 "Organization": "",
 "Person": "",
@@ -145,6 +157,11 @@ restart={
 toggle_db_menu={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":96,"unicode":0,"echo":false,"script":null)
+ ]
+}
+select={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 

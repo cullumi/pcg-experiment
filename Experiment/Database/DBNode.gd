@@ -5,8 +5,14 @@ class_name DBNode
 var contents:Dictionary={}
 var results:Array
 
+func to_string():
+	return "("+name+") "+String(contents)
+
 func get_ping(key:String, reqs:Dictionary={}):
 	return ping("ping_"+key, reqs, [])
+
+func connect_ping(key:String, target:DBNode):
+	connect("ping_"+key, target, "pinged");
 
 func has_key(key:String):
 	return has_signal("ping_"+key)

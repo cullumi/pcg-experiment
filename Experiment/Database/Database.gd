@@ -24,6 +24,12 @@ func initialize():
 	print("Generating Pings")
 	generate_pings()
 
+func get_new(key):
+	var struct:Dictionary = generator.structure
+	var newNode = struct[key][generator.TYPE].new()
+	newNode.name = "[new " + key + " node]"
+	return newNode
+
 func get_dependencies(key):
 	print("Getting Dependencies")
 	var struct:Dictionary = generator.structure

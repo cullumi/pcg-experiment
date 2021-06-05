@@ -1,21 +1,24 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Fonts/ItemName.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Utilities/UI/Displays/ContentDisplay.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Utilities/UI/Displays/NodeDisplay.gd" type="Script" id=3]
+[ext_resource path="res://Utilities/UI/Interactors/EditableContentDisplay.tscn" type="PackedScene" id=4]
 
 [node name="DBNodeDisplay" type="PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 963.0
 margin_bottom = 521.0
+focus_mode = 1
 size_flags_horizontal = 11
 size_flags_vertical = 2
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-content_scene = ExtResource( 2 )
+edit_content_scene = ExtResource( 4 )
+display_content_scene = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 7.0
@@ -50,6 +53,16 @@ custom_fonts/font = ExtResource( 1 )
 text = "Hello"
 align = 1
 valign = 1
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+visible = false
+margin_top = 32.0
+margin_right = 942.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
 margin_top = 32.0

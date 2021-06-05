@@ -3,11 +3,19 @@ extends PanelContainer
 class_name DisplayPanel
 
 export (PackedScene) var nd_scene
+export (int) var grid_width = 2
 
 onready var grid = $item_panel/ScrollContainer/GridContainer
 onready var label = $Label
 
+signal node_selected
+signal nodes_deselected
+
 var node_displays:Array
+var selected:int = -1
+
+func _ready():
+	grid.columns = grid_width
 
 func display_string(string:String):
 	label.text = string
@@ -22,28 +30,25 @@ func clear_display():
 	node_displays.clear()
 
 func display_nodes(nodes:Array):
-	for node in nodes:
-		display_node(node.name, node.contents.keys(), node.contents.values())
+	for n in range(0, nodes.size()):
+		var node = nodes[n]
+		display_node(node.name, node.contents.keys(), node.contents.values(), n)
 
-func display_node(node_name:String, content_names:Array, content_arrays:Array):
+func display_node(node_name:String, content_names:Array, content_arrays:Array, idx:int=-1):
 	var node_display = nd_scene.instance()
 	grid.add_child(node_display)
 	node_displays.append(node_display)
-	node_display.initialize(node_name)
-	node_display.add_contents(content_names, content_arrays)
+	node_display.initialize(false)
+	node_display.set_display(node_name, content_names, content_arrays)
+	node_display.connect("focus_entered", self, "select_node", [idx])
+	node_display.connect("focus_exited", self, "deselect_node", [idx])
 
-#func update_display(type:String=type_copy, reqs:Dictionary=req_copy):
-#	print("Updating Display")
-#	clear_display()
-#	if type == "": return
-#	var string = "Type: " + type + "\n"
-#	string += "Settings: "
-#	string = Strings.conc_item(string, reqs)
-#	string += "\n"
-#	var out = Database.get_ping(type, reqs)
-#	string = Strings.conc_item(string, out)
-#	label.text = string
-#	add_node_displays(out)
-#	type_copy = type
-#	if reqs != req_copy:
-#		req_copy = reqs
+func select_node(node_idx:int):
+	print("Node Selected:", node_idx)
+	selected = node_idx
+	emit_signal("node_selected", node_idx)
+
+func deselect_node(node_idx:int):
+	print("Node Deselected:", node_idx)
+	if selected < 0:
+		emit_signal("nodes_deselected")

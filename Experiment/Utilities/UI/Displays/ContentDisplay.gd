@@ -5,9 +5,9 @@ onready var value_label = $ValueLabel
 
 var value:String
 
-func initialize(c_name:String, c_value:String):
+func initialize(c_name:String, c_value:Array):
 	name = c_name
-	value = c_value
+	value = Strings.from_array(c_value)
 
 func _ready():
 	name_label.text = name

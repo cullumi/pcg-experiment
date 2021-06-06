@@ -12,6 +12,7 @@ var REC = "recipes"
 var CMP = "components"
 var PCS = "processes"
 var TYPE = "type"
+var PARENT = "parent"
 
 var structure = {
 	ECN:{TYPE:Economy},
@@ -94,18 +95,20 @@ func generate():
 # Single Generators
 
 func generate_economy():
-	var parent = add_root_child("Economies")
+	var parent = add_root_child(ECN)
+	structure[ECN][PARENT] = parent
 	var economy = Economy.new()
 	economy.name = "Countryland"
 	parent.add_child(economy)
 	economies.append(economy)
 	for org in organizations:
-		economy.connect("ping_organizations", org, "pinged")
+		economy.connect("ping_"+ORG, org, "pinged")
 
 # Bulk Generators
 
 func generate_organizations():
-	var parent = add_root_child("Organizations")
+	var parent = add_root_child(ORG)
+	structure[ORG][PARENT] = parent
 	var o_names = ["SuperParts", "WalCart Co.", "DishLand Inc.", "Heckle LLC"]
 	for o_name in o_names:
 		var org = Organization.new()
@@ -115,10 +118,11 @@ func generate_organizations():
 		for r in rands_range(0, roles.size(), 2):
 			org.connect("ping_roles", roles[r], "pinged")
 		var rand = randi_range(0, products.size())
-		org.connect("ping_products", products[rand], "pinged")
+		org.connect("ping_"+PRD, products[rand], "pinged")
 
 func generate_people():
-	var parent = add_root_child("People")
+	var parent = add_root_child(PPL)
+	structure[PPL][PARENT] = parent
 	var p_names = ["John", "Carol", "Rick", "Joshua", "Fiona", "Simone"]
 	for p_name in p_names:
 		var person = Person.new()
@@ -126,18 +130,20 @@ func generate_people():
 		parent.add_child(person)
 		people.append(person)
 		for s in rands_range(0, skills.size(), 2):
-			person.connect("ping_skills", skills[s], "pinged")
+			person.connect("ping_"+SKL, skills[s], "pinged")
 
 func generate_skills():
-	var parent = add_root_child("Skills")
+	var parent = add_root_child(SKL)
+	structure[SKL][PARENT] = parent
 	for p in range(0, processes.size()):
 		var skill = Skill.new()
 		parent.add_child(skill)
 		skills.append(skill)
-		skill.connect("ping_processes", processes[p], "pinged")
+		skill.connect("ping_"+PCS, processes[p], "pinged")
 
 func generate_roles():
-	var parent = add_root_child("Roles")
+	var parent = add_root_child(ROL)
+	structure[ROL][PARENT] = parent
 	var r_names = ["Clerk", "Waiter", "Carpenter", "Coach", "CEO", "Mayor"]
 	for r_name in r_names:
 		var role = Role.new()
@@ -146,7 +152,8 @@ func generate_roles():
 		roles.append(role)
 
 func generate_products():
-	var parent = add_root_child("Products")
+	var parent = add_root_child(PRD)
+	structure[PRD][PARENT] = parent
 	var p_names = ["Banana", "Television", "Clay Pot", "Energy Drink"]
 	var rpp:int = recipes.size() / p_names.size()
 	var r_idxs:Array = range(0, recipes.size())
@@ -160,20 +167,22 @@ func generate_products():
 			var rand = randi_range(0, r_idxs.size())
 			var idx = r_idxs[rand]
 			r_idxs.remove(rand)
-			product.connect("ping_recipes", recipes[idx], "pinged")
+			product.connect("ping_"+REC, recipes[idx], "pinged")
 
 func generate_recipes():
-	var parent = add_root_child("Recipes")
+	var parent = add_root_child(REC)
+	structure[REC][PARENT] = parent
 	for comp in components:
 		for pcss in processes:
 			var recipe = Recipe.new()
 			parent.add_child(recipe)
 			recipes.append(recipe)
-			recipe.connect("ping_components", comp, "pinged")
-			recipe.connect("ping_processes", pcss, "pinged")
+			recipe.connect("ping_"+CMP, comp, "pinged")
+			recipe.connect("ping_"+PCS, pcss, "pinged")
 
 func generate_components():
-	var parent = add_root_child("Components")
+	var parent = add_root_child(CMP)
+	structure[CMP][PARENT] = parent
 	var c_names = ["iron", "copper", "maple syrup", "cayenne pepper"]
 	for c_name in c_names:
 		var component = Component.new()
@@ -182,7 +191,8 @@ func generate_components():
 		components.append(component)
 
 func generate_processes():
-	var parent = add_root_child("Processes")
+	var parent = add_root_child(PCS)
+	structure[PCS][PARENT] = parent
 	var p_names = ["pulverize", "combine", "incinerate", "mix"]
 	for p_name in p_names:
 		var process = Process.new()

@@ -26,9 +26,14 @@ func initialize():
 
 func get_new(key):
 	var struct:Dictionary = generator.structure
-	var newNode = struct[key][generator.TYPE].new()
+	var newNode = struct[key].type.new()
 	newNode.name = "[new " + key + " node]"
 	return newNode
+
+func add_node(key, node):
+	db_dict[key].append(node)
+	generator.structure[key].parent.add_child(node)
+	connect_ping(key, node)
 
 func get_dependencies(key):
 	print("Getting Dependencies")
@@ -58,7 +63,7 @@ func generate_pings():
 			add_user_signal("ping_"+key)
 		for elem in db_dict[key]:
 # warning-ignore:return_value_discarded
-			connect("ping_"+key, elem, "pinged")
+			connect_ping(key, elem)
 
 func clear_database():
 	var keys = db_dict.keys()
@@ -77,7 +82,7 @@ func generate_ping_reqs(filter, dependencies):
 		addset_req(key, filter[key], reqs, dependencies)
 	return reqs
 	
-func erase_req(key, option, reqs:Dictionary, dependencies:Dictionary):
+func erase_req(key, reqs:Dictionary, dependencies:Dictionary):
 	var paths = dependencies[key]
 	for path in paths:
 		print(path)

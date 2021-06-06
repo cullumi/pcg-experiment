@@ -7,6 +7,7 @@
 margin_top = 18.0
 margin_right = 984.0
 margin_bottom = 560.0
+focus_mode = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
@@ -20,6 +21,7 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 977.0
 margin_bottom = 535.0
+mouse_filter = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -29,7 +31,7 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 963.0
 margin_bottom = 521.0
-focus_mode = 1
+mouse_filter = 1
 size_flags_horizontal = 3
 follow_focus = true
 scroll_horizontal_enabled = false
@@ -50,9 +52,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = 7.0
 margin_top = 521.0
 margin_right = 977.0
 margin_bottom = 535.0
 size_flags_vertical = 8
 text = "Test"
+
+[connection signal="focus_entered" from="." to="." method="_on_display_panel_focus_entered"]

@@ -32,6 +32,7 @@ func set_filter(new_filter):
 
 func set_option(option:String, key:String):
 	if option == "(any)":
+# warning-ignore:return_value_discarded
 		filter.erase(key)
 	else:
 		filter[key] = option
@@ -52,4 +53,5 @@ func add_dropdown(key:String, options:Array):
 	dropdown.initialize(key, options)
 	container.add_child(dropdown)
 	dropdowns.append(dropdown)
+# warning-ignore:return_value_discarded
 	dropdown.connect("item_selected", self, "set_option", [key])

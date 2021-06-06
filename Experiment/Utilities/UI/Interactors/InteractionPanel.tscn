@@ -15,19 +15,51 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 66.0
+margin_right = 70.0
 margin_bottom = 405.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="DBNodeDisplay" parent="VBoxContainer" instance=ExtResource( 2 )]
+[node name="NodeDisplay" parent="VBoxContainer" instance=ExtResource( 2 )]
 margin_left = 0.0
 margin_top = 0.0
-margin_right = 59.0
-margin_bottom = 50.0
+margin_right = 63.0
+margin_bottom = 350.0
+size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="VBoxContainer"]
-margin_top = 378.0
-margin_right = 59.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 354.0
+margin_right = 63.0
 margin_bottom = 398.0
+
+[node name="ActionButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 37.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
 text = "Add"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 41.0
+margin_right = 63.0
+margin_bottom = 44.0
+
+[node name="ResetButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 22.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "R"
+
+[node name="DeleteButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 22.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "D"
+
+[connection signal="name_changed" from="VBoxContainer/NodeDisplay" to="." method="_on_NodeDisplay_name_changed"]
+[connection signal="value_changed" from="VBoxContainer/NodeDisplay" to="." method="_on_NodeDisplay_value_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ActionButton" to="." method="_on_ActionButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/ResetButton" to="." method="_on_ResetButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/DeleteButton" to="." method="_on_DeleteButton_pressed"]

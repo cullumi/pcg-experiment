@@ -50,7 +50,7 @@ func get_option_index(option:String):
 func _on_pressed():
 	print("Option Pressed")
 
-func _on_item_focused(opt_idx:int):
+func _on_item_focused(_opt_idx:int):
 	print("Item Focused")
 
 func _on_item_selected(opt_idx:int):

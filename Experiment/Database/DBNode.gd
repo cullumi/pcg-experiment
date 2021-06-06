@@ -4,6 +4,11 @@ class_name DBNode
 
 var contents:Dictionary={}
 var results:Array
+var destroyed
+
+func destroy():
+	destroyed = true
+	queue_free()
 
 func to_string():
 	return "("+name+") "+String(contents)
@@ -12,6 +17,7 @@ func get_ping(key:String, reqs:Dictionary={}):
 	return ping("ping_"+key, reqs, [])
 
 func connect_ping(key:String, target:DBNode):
+# warning-ignore:return_value_discarded
 	connect("ping_"+key, target, "pinged");
 
 func has_key(key:String):
@@ -34,6 +40,7 @@ func pingback(result):
 	results.append(result)
 
 func pinged(source, reqs:Dictionary):
+	if destroyed: return
 	if reqs.has("name"):
 		if (not req_met("name", reqs, [name])): return
 	if reqs.has("contents"):

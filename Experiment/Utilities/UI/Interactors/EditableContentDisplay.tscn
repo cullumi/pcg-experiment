@@ -12,17 +12,18 @@ __meta__ = {
 }
 
 [node name="NameLabel" type="Label" parent="."]
-margin_right = 948.0
-margin_bottom = 14.0
+margin_top = 3.0
+margin_right = 903.0
+margin_bottom = 17.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 align = 1
 valign = 1
 
 [node name="VSeparator" type="VSeparator" parent="."]
-margin_left = 952.0
-margin_right = 956.0
-margin_bottom = 14.0
+margin_left = 907.0
+margin_right = 911.0
+margin_bottom = 20.0
 
 [node name="ValueEdit" type="LineEdit" parent="."]
 visible = false
@@ -31,5 +32,17 @@ margin_right = 956.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 align = 1
+
+[node name="AddValue" type="Button" parent="."]
+margin_left = 915.0
+margin_right = 935.0
+margin_bottom = 20.0
+text = "+"
+
+[node name="RemoveValue" type="Button" parent="."]
+margin_left = 939.0
+margin_right = 956.0
+margin_bottom = 20.0
+text = "-"
 
 [connection signal="text_entered" from="ValueEdit" to="." method="_on_ValueEdit_text_entered"]

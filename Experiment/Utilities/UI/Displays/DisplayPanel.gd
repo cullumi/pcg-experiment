@@ -13,6 +13,7 @@ signal nodes_deselected
 
 var node_displays:Array
 var selected:int = -1
+enum DESELECT {NODE=-1, ALL=-2}
 
 func _ready():
 	grid.columns = grid_width
@@ -50,5 +51,11 @@ func select_node(node_idx:int):
 
 func deselect_node(node_idx:int):
 	print("Node Deselected:", node_idx)
-	if selected < 0:
+	selected = -1
+
+func _on_display_panel_focus_entered():
+	print("Display Panel Selected")
+	if selected == DESELECT.NODE:
+		print("Node(s) Deselected")
+		selected = DESELECT.ALL
 		emit_signal("nodes_deselected")

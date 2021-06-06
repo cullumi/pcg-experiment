@@ -15,7 +15,7 @@ var stored_filters:Array
 func initialize(keys:Array, filters:Array=[]):
 	stored_keys = keys
 	stored_filters = filters
-	for i in range(0, keys.size()-filters.size()):
+	for _i in range(0, keys.size()-filters.size()):
 		filters.append({})
 	dropdown.initialize("+", stored_keys)
 	add_tab(stored_keys[0], stored_filters[0])

@@ -5,7 +5,7 @@
 [ext_resource path="res://Utilities/UI/Displays/NodeDisplay.gd" type="Script" id=3]
 [ext_resource path="res://Utilities/UI/Interactors/EditableContentDisplay.tscn" type="PackedScene" id=4]
 
-[node name="DBNodeDisplay" type="PanelContainer"]
+[node name="NodeDisplay" type="PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 963.0
@@ -48,7 +48,7 @@ __meta__ = {
 [node name="NameLabel" type="Label" parent="VBoxContainer"]
 margin_top = 12.0
 margin_right = 942.0
-margin_bottom = 28.0
+margin_bottom = 32.0
 custom_fonts/font = ExtResource( 1 )
 text = "Hello"
 align = 1
@@ -65,9 +65,9 @@ __meta__ = {
 }
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-margin_top = 32.0
+margin_top = 36.0
 margin_right = 942.0
-margin_bottom = 36.0
+margin_bottom = 40.0
 
 [node name="DBNodeContent" parent="VBoxContainer" instance=ExtResource( 2 )]
 visible = false

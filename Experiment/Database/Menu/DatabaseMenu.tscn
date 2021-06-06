@@ -69,5 +69,8 @@ size_flags_stretch_ratio = 0.5
 
 [connection signal="tab_changed" from="VBoxContainer/NavTabs" to="." method="_on_NavTabs_tab_changed"]
 [connection signal="filter_changed" from="VBoxContainer/OptionPanel" to="." method="_on_OptionPanel_filter_changed"]
-[connection signal="node_selected" from="VBoxContainer/HBoxContainer/DisplayPanel" to="." method="_on_DisplayPanel_node_selected"]
-[connection signal="nodes_deselected" from="VBoxContainer/HBoxContainer/DisplayPanel" to="." method="_on_DisplayPanel_nodes_deselected"]
+[connection signal="node_selected" from="VBoxContainer/HBoxContainer/DisplayPanel" to="." method="select_node"]
+[connection signal="nodes_deselected" from="VBoxContainer/HBoxContainer/DisplayPanel" to="." method="select_new"]
+[connection signal="delete_node" from="VBoxContainer/HBoxContainer/InteractionPanel" to="." method="_on_InteractionPanel_delete_node"]
+[connection signal="node_added" from="VBoxContainer/HBoxContainer/InteractionPanel" to="." method="_on_InteractionPanel_node_added"]
+[connection signal="node_edited" from="VBoxContainer/HBoxContainer/InteractionPanel" to="." method="_on_InteractionPanel_node_edited"]

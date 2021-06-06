@@ -12,3 +12,4 @@ func initialize(c_name:String, c_value:Array):
 func _ready():
 	name_label.text = name
 	value_label.text = value
+

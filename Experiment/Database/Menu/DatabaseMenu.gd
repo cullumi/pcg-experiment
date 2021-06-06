@@ -5,13 +5,13 @@ onready var options:OptionsPanel = $VBoxContainer/OptionPanel
 onready var display:DisplayPanel = $VBoxContainer/HBoxContainer/DisplayPanel
 onready var interaction:InteractionPanel = $VBoxContainer/HBoxContainer/InteractionPanel
 
-var node_type
-var filter
-var filter_options
-var dependencies
-var reqs
-var nodes
-var selected_node
+var node_type:String
+var filter:Dictionary
+var filter_options:Dictionary
+var dependencies:Dictionary
+var reqs:Dictionary
+var nodes:Array
+var selected_node:DBNode
 var editing:bool = false
 
 #var filter_changed:bool = false
@@ -66,7 +66,7 @@ func _on_OptionPanel_filter_changed(new_filter):
 	navTabs.save_filter(new_filter)
 	update_menu()
 
-func _on_DisplayPanel_node_selected(node_idx):
+func select_node(node_idx):
 	var node:DBNode = nodes[node_idx]
 	if not editing:
 		selected_node.queue_free()
@@ -76,10 +76,29 @@ func _on_DisplayPanel_node_selected(node_idx):
 	interaction.set_node(node)
 	interaction.set_edit(true)
 
-func _on_DisplayPanel_nodes_deselected():
+func select_new():
 	var node:DBNode = Database.get_new(node_type)
 	selected_node = node
 	editing = false
 	print("New Node:", node.to_string())
 	interaction.set_node(node)
 	interaction.set_edit(false)
+
+func _on_InteractionPanel_node_added(new_name, new_contents):
+	print("Adding Node:", new_name, " / ", selected_node)
+	selected_node.name = new_name
+	selected_node.contents = new_contents
+	Database.add_node(node_type, selected_node)
+	interaction.set_edit(true)
+	update_menu()
+
+func _on_InteractionPanel_node_edited(new_name, new_contents):
+	print("Editing Node:", new_name, " / ", selected_node)
+	selected_node.name = new_name
+	selected_node.contents = new_contents
+	update_menu()
+
+func _on_InteractionPanel_delete_node():
+	selected_node.destroy()
+	select_new()
+	update_menu()

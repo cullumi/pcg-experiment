@@ -24,7 +24,7 @@ margin_left = 12.0
 margin_right = 854.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
-tab_close_display_policy = 1
+tab_close_display_policy = 2
 
 [node name="Control" type="Control" parent="."]
 margin_left = 858.0

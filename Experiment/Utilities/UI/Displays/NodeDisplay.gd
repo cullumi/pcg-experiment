@@ -6,12 +6,12 @@ export (PackedScene) var edit_content_scene
 export (PackedScene) var display_content_scene
 var content_scene
 
-onready var container = $VBoxContainer
+onready var container = $VBoxContainer/ScrollContainer/VBoxContainer
 onready var name_label = $VBoxContainer/NameLabel
 onready var name_edit = $VBoxContainer/LineEdit
 
-signal name_changed()
-signal value_changed()
+signal name_changed
+signal value_changed
 
 var separators:Array
 var contents:Array
@@ -66,10 +66,10 @@ func add_content(c_name:String, c_arr:Array):
 	container.add_child(content)
 	contents.append(content)
 	if content.has_signal("value_changed"):
-		content.connect("value_changed", self, "_on_editablContent_changed")
+		content.connect("value_changed", self, "_on_editableContent_changed")
 
 func _on_nameEdit_changed(new_name:String):
 	emit_signal("name_changed", new_name)
 
-func _on_editableContent_changed(key:String, new_value:String):
-	emit_signal("value_changed", key, new_value)
+func _on_editableContent_changed(key:String, new_values):
+	emit_signal("value_changed", key, new_values)

@@ -2,9 +2,6 @@ extends Control
 
 var latest_event
 
-func _input(event):
-	pass
-
 func _unhandled_input(event):
 	latest_event = event
 	#if pressed("select"): unfocus_all()

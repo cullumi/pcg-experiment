@@ -6,14 +6,19 @@
 margin_top = 52.0
 margin_right = 956.0
 margin_bottom = 66.0
+size_flags_vertical = 0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Spacer" type="Control" parent="."]
+margin_bottom = 20.0
+
 [node name="NameLabel" type="Label" parent="."]
+margin_left = 4.0
 margin_top = 3.0
-margin_right = 903.0
+margin_right = 180.0
 margin_bottom = 17.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
@@ -21,28 +26,46 @@ align = 1
 valign = 1
 
 [node name="VSeparator" type="VSeparator" parent="."]
-margin_left = 907.0
-margin_right = 911.0
+margin_left = 184.0
+margin_right = 188.0
 margin_bottom = 20.0
 
-[node name="ValueEdit" type="LineEdit" parent="."]
+[node name="ValueGrid" type="GridContainer" parent="."]
+margin_left = 192.0
+margin_right = 899.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+columns = 3
+
+[node name="ValueEdit" type="LineEdit" parent="ValueGrid"]
 visible = false
-margin_left = 200.0
-margin_right = 956.0
+margin_right = 237.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 align = 1
 
+[node name="VSeparator2" type="VSeparator" parent="."]
+margin_left = 903.0
+margin_right = 907.0
+margin_bottom = 20.0
+
 [node name="AddValue" type="Button" parent="."]
-margin_left = 915.0
-margin_right = 935.0
+margin_left = 911.0
+margin_right = 931.0
 margin_bottom = 20.0
 text = "+"
 
 [node name="RemoveValue" type="Button" parent="."]
-margin_left = 939.0
-margin_right = 956.0
+margin_left = 935.0
+margin_right = 952.0
 margin_bottom = 20.0
+disabled = true
 text = "-"
 
-[connection signal="text_entered" from="ValueEdit" to="." method="_on_ValueEdit_text_entered"]
+[node name="Spacer2" type="Control" parent="."]
+margin_left = 956.0
+margin_right = 956.0
+margin_bottom = 20.0
+
+[connection signal="pressed" from="AddValue" to="." method="_on_AddValue_pressed"]
+[connection signal="pressed" from="RemoveValue" to="." method="_on_RemoveValue_pressed"]

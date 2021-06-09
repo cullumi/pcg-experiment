@@ -1,9 +1,9 @@
 extends HBoxContainer
 
 onready var name_label = $NameLabel
-onready var value_grid = $ValueGrid
-onready var add_button = $AddValue
-onready var remove_button = $RemoveValue
+onready var value_grid:ResizableGrid = $VFixedContainer/ValueGrid
+onready var add_button = $ButtonBar/AddValue
+onready var remove_button = $ButtonBar/RemoveValue
 
 signal value_changed
 
@@ -35,8 +35,10 @@ func add_value(value):
 
 func insert_value(idx, value):
 	var edit:LineEdit = LineEdit.new()
-	edit.size_flags_horizontal = SIZE_EXPAND_FILL
-	edit.size_flags_vertical = SIZE_EXPAND_FILL
+	edit.rect_min_size = edit.rect_size
+	edit.size_flags_horizontal = SIZE_FILL
+	edit.size_flags_vertical = SIZE_FILL
+	edit.expand_to_text_length = true
 	edit.text = value
 	if edits.size() > 0:
 		value_grid.add_child_below_node(edits[idx-1], edit)
@@ -72,7 +74,6 @@ func _on_AddValue_pressed():
 	var idx = (edits.size()-1 if selected_idx < 0 else selected_idx) + 1
 	insert_value(idx, "")
 	remove_button.disabled = false
-	print("Added Value:", edits)
 	emit_signal("value_changed", name, values)
 
 func _on_RemoveValue_pressed():

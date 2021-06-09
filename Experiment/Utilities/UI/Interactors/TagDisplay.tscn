@@ -23,6 +23,7 @@ margin_bottom = 38.0
 
 [node name="TagGrid" type="GridContainer" parent="HBoxContainer"]
 margin_bottom = 20.0
+columns = 6
 
 [node name="Dropdown" parent="HBoxContainer" instance=ExtResource( 2 )]
 margin_left = 4.0

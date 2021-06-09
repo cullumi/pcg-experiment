@@ -47,7 +47,6 @@ func _on_NodeDisplay_name_changed(new_name:String):
 
 func _on_NodeDisplay_value_changed(key:String, new_values):
 	node_contents[key] = new_values
-	print("Value Changed:", new_values)
 
 func _on_ActionButton_pressed():
 	if editing:

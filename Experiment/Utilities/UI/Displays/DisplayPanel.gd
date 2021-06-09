@@ -33,14 +33,14 @@ func clear_display():
 func display_nodes(nodes:Array):
 	for n in range(0, nodes.size()):
 		var node = nodes[n]
-		display_node(node.name, node.contents.keys(), node.contents.values(), n)
+		display_node(node, n)
 
-func display_node(node_name:String, content_names:Array, content_arrays:Array, idx:int=-1):
+func display_node(node, idx:int=-1):
 	var node_display = nd_scene.instance()
 	grid.add_child(node_display)
 	node_displays.append(node_display)
 	node_display.initialize(false)
-	node_display.set_display(node_name, content_names, content_arrays)
+	node_display.set_node(node)
 	node_display.connect("focus_entered", self, "select_node", [idx])
 	node_display.connect("focus_exited", self, "deselect_node", [idx])
 

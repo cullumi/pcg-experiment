@@ -38,16 +38,16 @@ scroll_horizontal_enabled = false
 
 [node name="GridContainer" type="GridContainer" parent="item_panel/ScrollContainer"]
 margin_right = 956.0
+margin_bottom = 514.0
 size_flags_horizontal = 3
-size_flags_vertical = 2
+size_flags_vertical = 3
 columns = 3
 
 [node name="DBNodeDisplay" parent="item_panel/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
-visible = false
 margin_left = 0.0
 margin_top = 0.0
 margin_right = 318.0
-margin_bottom = 66.0
+margin_bottom = 514.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

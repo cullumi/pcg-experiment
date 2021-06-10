@@ -1,7 +1,7 @@
 extends HBoxContainer
 
 onready var name_label = $NameLabel
-onready var value_grid:ResizableGrid = $VFixedContainer/ValueGrid
+onready var value_grid = $VFixedContainer/ValueBody
 onready var add_button = $ButtonBar/AddValue
 onready var remove_button = $ButtonBar/RemoveValue
 

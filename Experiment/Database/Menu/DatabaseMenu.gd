@@ -33,6 +33,7 @@ func update_menu():
 	options.set_filter(filter)
 	reqs = Database.generate_ping_reqs(filter, dependencies)
 	nodes = Database.get_ping(node_type, reqs)
+	print(nodes)
 	display.replace_nodes(nodes)
 	var d_string = Strings.from_item(nodes) + "\n"
 	d_string += Strings.from_item(navTabs.saved_filters) + "\n"
@@ -89,6 +90,7 @@ func _on_InteractionPanel_node_added(new_name, new_contents):
 	selected_node.name = new_name
 	selected_node.contents = new_contents
 	Database.add_node(node_type, selected_node)
+	editing = true
 	interaction.set_edit(true)
 	update_menu()
 

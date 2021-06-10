@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://VSplitsContainer.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+margin_left = 204.23
+margin_top = 29.3665
+margin_right = 835.23
+margin_bottom = 69.3665
+split_offset = 250
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="HSplitContainer"]
+margin_right = 282.0
+margin_bottom = 40.0
+text = "1:2"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer"]
+margin_left = 294.0
+margin_right = 631.0
+margin_bottom = 40.0
+
+[node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer/HSplitContainer"]
+margin_right = 337.0
+margin_bottom = 40.0
+
+[node name="Button" type="Button" parent="HSplitContainer/HSplitContainer/HSplitContainer"]
+margin_right = 32.0
+margin_bottom = 40.0
+text = "2:1"
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="HSplitContainer/HSplitContainer/HSplitContainer"]
+margin_left = 44.0
+margin_right = 337.0
+margin_bottom = 40.0
+
+[node name="Button" type="Button" parent="HSplitContainer/HSplitContainer/HSplitContainer/HSplitContainer2"]
+margin_right = 32.0
+margin_bottom = 40.0
+text = "2:1"
+
+[node name="HSplitContainer3" type="HSplitContainer" parent="HSplitContainer/HSplitContainer/HSplitContainer/HSplitContainer2"]
+margin_left = 44.0
+margin_right = 293.0
+margin_bottom = 40.0
+
+[node name="Button" type="Button" parent="HSplitContainer/HSplitContainer/HSplitContainer/HSplitContainer2/HSplitContainer3"]
+margin_right = 249.0
+margin_bottom = 40.0
+text = "2:1"
+
+[node name="VSplitsContainer" type="MarginContainer" parent="."]
+margin_left = 956.0
+margin_top = 33.0
+margin_right = 996.0
+margin_bottom = 558.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="VSplitsContainer"]
+margin_right = 40.0
+margin_bottom = 525.0
+
+[node name="Button2" type="Button" parent="VSplitsContainer"]
+margin_right = 40.0
+margin_bottom = 525.0
+
+[node name="Button3" type="Button" parent="VSplitsContainer"]
+margin_right = 40.0
+margin_bottom = 525.0
+
+[node name="Button4" type="Button" parent="VSplitsContainer"]
+margin_right = 40.0
+margin_bottom = 525.0

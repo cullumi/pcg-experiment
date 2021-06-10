@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Utilities/UI/Displays/DisplayPanel.gd" type="Script" id=1]
 [ext_resource path="res://Utilities/UI/Displays/NodeDisplay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SplitsGridContainer.gd" type="Script" id=3]
 
 [node name="display_panel" type="PanelContainer"]
 margin_top = 18.0
@@ -15,6 +16,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 nd_scene = ExtResource( 2 )
+grid_width = 1
 
 [node name="item_panel" type="PanelContainer" parent="."]
 margin_left = 7.0
@@ -36,20 +38,27 @@ size_flags_horizontal = 3
 follow_focus = true
 scroll_horizontal_enabled = false
 
-[node name="GridContainer" type="GridContainer" parent="item_panel/ScrollContainer"]
+[node name="SplitsGridContainer" type="MarginContainer" parent="item_panel/ScrollContainer"]
 margin_right = 956.0
 margin_bottom = 514.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 3 )
+
+[node name="GridContainer" type="GridContainer" parent="item_panel/ScrollContainer"]
+visible = false
+margin_right = 956.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
 columns = 3
 
 [node name="DBNodeDisplay" parent="item_panel/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+visible = false
 margin_left = 0.0
 margin_top = 0.0
 margin_right = 318.0
 margin_bottom = 514.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="."]
 visible = false

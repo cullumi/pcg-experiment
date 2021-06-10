@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Container",
+"class": "BodyContainer",
+"language": "GDScript",
+"path": "res://BodyContainer.gd"
+}, {
 "base": "DBNode",
 "class": "Component",
 "language": "GDScript",
@@ -54,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Database/Generator.gd"
 }, {
+"base": "BodyContainer",
+"class": "HBodyContainer",
+"language": "GDScript",
+"path": "res://HBodyContainer.gd"
+}, {
 "base": "FixedContainer",
 "class": "HFixedContainer",
 "language": "GDScript",
@@ -63,6 +73,11 @@ _global_script_classes=[ {
 "class": "HShrinkBoxContainer",
 "language": "GDScript",
 "path": "res://Utilities/UI/Displays/HShrinkBoxContainer.gd"
+}, {
+"base": "SplitsContainer",
+"class": "HSplitsContainer",
+"language": "GDScript",
+"path": "res://HSplitsContainer.gd"
 }, {
 "base": "PanelContainer",
 "class": "InteractionPanel",
@@ -114,11 +129,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Database/DBNodes/Recipe.gd"
 }, {
-"base": "GridContainer",
-"class": "ResizableGrid",
-"language": "GDScript",
-"path": "res://Utilities/UI/Interactors/ResizableGrid.gd"
-}, {
 "base": "DBNode",
 "class": "Role",
 "language": "GDScript",
@@ -134,10 +144,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Utilities/UI/Spacer.gd"
 }, {
+"base": "MarginContainer",
+"class": "SplitsContainer",
+"language": "GDScript",
+"path": "res://SplitsContainer.gd"
+}, {
+"base": "MarginContainer",
+"class": "SplitsGridContainer",
+"language": "GDScript",
+"path": "res://SplitsGridContainer.gd"
+}, {
 "base": "Object",
 "class": "Strings",
 "language": "GDScript",
 "path": "res://Utilities/Helpers/Strings.gd"
+}, {
+"base": "BodyContainer",
+"class": "VBodyContainer",
+"language": "GDScript",
+"path": "res://VBodyContainer.gd"
 }, {
 "base": "FixedContainer",
 "class": "VFixedContainer",
@@ -148,8 +173,19 @@ _global_script_classes=[ {
 "class": "VShrinkBoxContainer",
 "language": "GDScript",
 "path": "res://Utilities/UI/Displays/VShrinkBoxContainer.gd"
+}, {
+"base": "Container",
+"class": "VSplitGrid",
+"language": "GDScript",
+"path": "res://VSplitGrid.gd"
+}, {
+"base": "SplitsContainer",
+"class": "VSplitsContainer",
+"language": "GDScript",
+"path": "res://VSplitsContainer.gd"
 } ]
 _global_script_class_icons={
+"BodyContainer": "",
 "Component": "",
 "DBNode": "",
 "Dicts": "",
@@ -159,8 +195,10 @@ _global_script_class_icons={
 "Economy": "",
 "FixedContainer": "",
 "Generator": "",
+"HBodyContainer": "",
 "HFixedContainer": "",
 "HShrinkBoxContainer": "",
+"HSplitsContainer": "",
 "InteractionPanel": "",
 "NavTabs": "",
 "NodeDisplay": "",
@@ -171,13 +209,17 @@ _global_script_class_icons={
 "Process": "",
 "Product": "",
 "Recipe": "",
-"ResizableGrid": "",
 "Role": "",
 "Skill": "",
 "Spacer": "",
+"SplitsContainer": "",
+"SplitsGridContainer": "",
 "Strings": "",
+"VBodyContainer": "",
 "VFixedContainer": "",
-"VShrinkBoxContainer": ""
+"VShrinkBoxContainer": "",
+"VSplitGrid": "",
+"VSplitsContainer": ""
 }
 
 [application]

@@ -37,6 +37,7 @@ func display_nodes(nodes:Array):
 
 func display_node(node, idx:int=-1):
 	var node_display = nd_scene.instance()
+	node_display.name = node.name
 	grid.add_child(node_display)
 	node_displays.append(node_display)
 	node_display.initialize(false)

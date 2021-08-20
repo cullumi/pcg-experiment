@@ -1,0 +1,73 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "ContainerX",
+"class": "AccordionContainer",
+"language": "GDScript",
+"path": "res://addon_scripts/node/canvas_item/control/container/container_x/AccordionContainer.gd"
+}, {
+"base": "Container",
+"class": "ContainerX",
+"language": "GDScript",
+"path": "res://addon_scripts/node/canvas_item/control/container/ContainerX.gd"
+}, {
+"base": "ContainerX",
+"class": "ContentView",
+"language": "GDScript",
+"path": "res://addon_scripts/node/canvas_item/control/container/container_x/ContentView.gd"
+}, {
+"base": "AccordionContainer",
+"class": "HAccordionContainer",
+"language": "GDScript",
+"path": "res://addon_scripts/node/canvas_item/control/container/container_x/accordion_container/HAccordionContainer.gd"
+}, {
+"base": "Button",
+"class": "PullBar",
+"language": "GDScript",
+"path": "res://addon_scripts/node/canvas_item/control/base_button/button/PullBar.gd"
+}, {
+"base": "Object",
+"class": "Strings",
+"language": "GDScript",
+"path": "res://utilities/Strings.gd"
+}, {
+"base": "AccordionContainer",
+"class": "VAccordionContainer",
+"language": "GDScript",
+"path": "res://addon_scripts/node/canvas_item/control/container/container_x/accordion_container/VAccordionContainer.gd"
+} ]
+_global_script_class_icons={
+"AccordionContainer": "",
+"ContainerX": "",
+"ContentView": "",
+"HAccordionContainer": "",
+"PullBar": "",
+"Strings": "",
+"VAccordionContainer": ""
+}
+
+[application]
+
+config/name="UI Experiments"
+run/main_scene="res://UI.tscn"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/always_on_top=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

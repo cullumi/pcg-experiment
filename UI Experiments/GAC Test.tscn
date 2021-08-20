@@ -1,0 +1,137 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addon_scripts/node/canvas_item/control/container/container_x/accordion_container/HAccordionContainer.gd" type="Script" id=1]
+[ext_resource path="res://InfoDisplay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addon_scripts/node/canvas_item/control/container/container_x/accordion_container/VAccordionContainer.gd" type="Script" id=3]
+
+[node name="GAC Test" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HAccordionContainer" type="Container" parent="."]
+margin_left = 209.0
+margin_top = 69.0
+margin_right = 844.0
+margin_bottom = 584.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+use_custom_lock_length = true
+custom_lock_length = 500.0
+spacing = 10.0
+
+[node name="VAccordionContainer" type="Container" parent="HAccordionContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+match_content_depth = true
+
+[node name="InfoDisplay" parent="HAccordionContainer/VAccordionContainer" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="HAccordionContainer/VAccordionContainer" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="HAccordionContainer/VAccordionContainer" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay4" parent="HAccordionContainer/VAccordionContainer" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay5" parent="HAccordionContainer/VAccordionContainer" instance=ExtResource( 2 )]
+
+[node name="VAccordionContainer2" type="Container" parent="HAccordionContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+match_content_depth = true
+
+[node name="InfoDisplay" parent="HAccordionContainer/VAccordionContainer2" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="HAccordionContainer/VAccordionContainer2" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="HAccordionContainer/VAccordionContainer2" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay4" parent="HAccordionContainer/VAccordionContainer2" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay5" parent="HAccordionContainer/VAccordionContainer2" instance=ExtResource( 2 )]
+
+[node name="VAccordionContainer3" type="Container" parent="HAccordionContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+match_content_depth = true
+
+[node name="InfoDisplay" parent="HAccordionContainer/VAccordionContainer3" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="HAccordionContainer/VAccordionContainer3" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="HAccordionContainer/VAccordionContainer3" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay4" parent="HAccordionContainer/VAccordionContainer3" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay5" parent="HAccordionContainer/VAccordionContainer3" instance=ExtResource( 2 )]
+
+[node name="VAccordionContainer4" type="Container" parent="HAccordionContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+match_content_depth = true
+
+[node name="InfoDisplay" parent="HAccordionContainer/VAccordionContainer4" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="HAccordionContainer/VAccordionContainer4" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="HAccordionContainer/VAccordionContainer4" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay4" parent="HAccordionContainer/VAccordionContainer4" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay5" parent="HAccordionContainer/VAccordionContainer4" instance=ExtResource( 2 )]
+
+[node name="VAccordionContainer5" type="Container" parent="HAccordionContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+match_content_depth = true
+
+[node name="InfoDisplay" parent="HAccordionContainer/VAccordionContainer5" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="HAccordionContainer/VAccordionContainer5" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="HAccordionContainer/VAccordionContainer5" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay4" parent="HAccordionContainer/VAccordionContainer5" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay5" parent="HAccordionContainer/VAccordionContainer5" instance=ExtResource( 2 )]
+
+[node name="VAccordionContainer6" type="Container" parent="HAccordionContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+match_content_depth = true
+
+[node name="InfoDisplay" parent="HAccordionContainer/VAccordionContainer6" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="HAccordionContainer/VAccordionContainer6" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="HAccordionContainer/VAccordionContainer6" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay4" parent="HAccordionContainer/VAccordionContainer6" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay5" parent="HAccordionContainer/VAccordionContainer6" instance=ExtResource( 2 )]
+
+[node name="VAccordionContainer7" type="Container" parent="HAccordionContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+match_content_depth = true
+
+[node name="InfoDisplay" parent="HAccordionContainer/VAccordionContainer7" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="HAccordionContainer/VAccordionContainer7" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="HAccordionContainer/VAccordionContainer7" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay4" parent="HAccordionContainer/VAccordionContainer7" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay5" parent="HAccordionContainer/VAccordionContainer7" instance=ExtResource( 2 )]

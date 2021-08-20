@@ -1,0 +1,183 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addon_scripts/node/canvas_item/control/container/container_x/accordion_container/HAccordionContainer.gd" type="Script" id=1]
+[ext_resource path="res://InfoDisplay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addon_scripts/node/canvas_item/control/container/container_x/accordion_container/VAccordionContainer.gd" type="Script" id=3]
+[ext_resource path="res://GridAccordionContainer.gd" type="Script" id=4]
+[ext_resource path="res://addon_scripts/node/canvas_item/control/base_button/button/PullBar.gd" type="Script" id=5]
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VAC" type="Container" parent="."]
+margin_left = 1083.61
+margin_top = 110.036
+margin_right = 1175.61
+margin_bottom = 150.036
+rect_scale = Vector2( 1, -1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+invert = true
+
+[node name="InfoDisplay" parent="VAC" instance=ExtResource( 2 )]
+rect_scale = Vector2( 1, -1 )
+
+[node name="InfoDisplay2" parent="VAC" instance=ExtResource( 2 )]
+rect_scale = Vector2( 1, -1 )
+
+[node name="InfoDisplay3" parent="VAC" instance=ExtResource( 2 )]
+rect_scale = Vector2( 1, -1 )
+
+[node name="InfoDisplay4" parent="VAC" instance=ExtResource( 2 )]
+rect_scale = Vector2( 1, -1 )
+
+[node name="GridAccordionContainer" type="Container" parent="."]
+margin_left = 61.0
+margin_top = 81.0
+margin_right = 590.0
+margin_bottom = 535.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+use_backpanel = false
+
+[node name="InfoDisplay" parent="GridAccordionContainer" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="GridAccordionContainer" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="GridAccordionContainer" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay4" parent="GridAccordionContainer" instance=ExtResource( 2 )]
+
+[node name="HAC" type="Container" parent="."]
+margin_left = 1092.68
+margin_top = 687.131
+margin_right = 1584.68
+margin_bottom = 1031.13
+rect_min_size = Vector2( 30, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+rect_max_size = Vector2( 120, -1 )
+lock = true
+custom_lock_length = 200.0
+spacing = 10.0
+debug = true
+
+[node name="InfoDisplay" parent="HAC" instance=ExtResource( 2 )]
+title = "One"
+
+[node name="InfoDisplay2" parent="HAC" instance=ExtResource( 2 )]
+title = "Two"
+
+[node name="InfoDisplay3" parent="HAC" instance=ExtResource( 2 )]
+title = "Three"
+
+[node name="InfoDisplay4" parent="HAC" instance=ExtResource( 2 )]
+title = "Four"
+
+[node name="InfoDisplay5" parent="HAC" instance=ExtResource( 2 )]
+title = "Five"
+
+[node name="PullBar" type="Button" parent="."]
+margin_left = 915.947
+margin_top = 872.248
+margin_right = 927.947
+margin_bottom = 892.248
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GAC" type="Container" parent="."]
+visible = false
+margin_left = 124.234
+margin_top = 658.961
+margin_right = 817.234
+margin_bottom = 1183.96
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+lock = true
+custom_lock_length = 200.0
+spacing = 3.0
+
+[node name="G-HAC" type="Container" parent="GAC"]
+margin_right = 693.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+match_content_depth = true
+custom_lock_length = 1000.0
+
+[node name="InfoDisplay" parent="GAC/G-HAC" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="GAC/G-HAC" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="GAC/G-HAC" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay4" parent="GAC/G-HAC" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay5" parent="GAC/G-HAC" instance=ExtResource( 2 )]
+
+[node name="G-HAC2" type="Container" parent="GAC"]
+margin_right = 693.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+match_content_depth = true
+
+[node name="InfoDisplay" parent="GAC/G-HAC2" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="GAC/G-HAC2" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="GAC/G-HAC2" instance=ExtResource( 2 )]
+
+[node name="G-HAC3" type="Container" parent="GAC"]
+margin_right = 693.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+match_content_depth = true
+
+[node name="InfoDisplay" parent="GAC/G-HAC3" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="GAC/G-HAC3" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="GAC/G-HAC3" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay4" parent="GAC/G-HAC3" instance=ExtResource( 2 )]
+
+[node name="G-HAC4" type="Container" parent="GAC"]
+margin_right = 693.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+match_content_depth = true
+
+[node name="InfoDisplay" parent="GAC/G-HAC4" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="GAC/G-HAC4" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="GAC/G-HAC4" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay4" parent="GAC/G-HAC4" instance=ExtResource( 2 )]
+
+[node name="G-HAC5" type="Container" parent="GAC"]
+margin_right = 693.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+match_content_depth = true
+
+[node name="InfoDisplay" parent="GAC/G-HAC5" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="GAC/G-HAC5" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="GAC/G-HAC5" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay4" parent="GAC/G-HAC5" instance=ExtResource( 2 )]

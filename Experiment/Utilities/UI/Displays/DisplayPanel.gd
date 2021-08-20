@@ -6,6 +6,7 @@ export (PackedScene) var nd_scene
 export (int) var grid_width = 2
 
 onready var grid = $item_panel/ScrollContainer/GridContainer
+#onready var grid = $item_panel/ScrollContainer/SGContainer
 onready var label = $Label
 
 signal node_selected

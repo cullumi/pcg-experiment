@@ -30,7 +30,7 @@ func _draw():
 # Functionality
 
 func align(evenly_space:bool=false):
-	print("Aligning: ", Strings.to_names(children))
+	print("\n", "[", self.name, "] ", "Aligning: ", Strings.to_names(children))
 	if children.size() > 1:
 		align_children(evenly_space)
 	else:
@@ -39,7 +39,7 @@ func align(evenly_space:bool=false):
 			var v_split = get_split(0, evenly_space)
 			reparent_child(child, v_split)
 		h_split.trim_splits(0)
-	print("VSplits:")
+	print("\nVSplits:")
 	for child in h_split.get_children():
 		print("   ", child.name, ": ", Strings.to_names(child.get_children()))
 

@@ -73,7 +73,7 @@ func select_node(node_idx):
 		selected_node.queue_free()
 	selected_node = node
 	editing = true
-	print("Old Node:", node.to_string())
+#	print("Old Node:", node.to_string())
 	interaction.set_node(node)
 	interaction.set_edit(true)
 
@@ -81,12 +81,12 @@ func select_new():
 	var node:DBNode = Database.get_new(node_type)
 	selected_node = node
 	editing = false
-	print("New Node:", node.to_string())
+#	print("New Node:", node.to_string())
 	interaction.set_node(node)
 	interaction.set_edit(false)
 
 func _on_InteractionPanel_node_added(new_name, new_contents):
-	print("Adding Node:", new_name, " / ", selected_node)
+#	print("Adding Node:", new_name, " / ", selected_node)
 	selected_node.name = new_name
 	selected_node.contents = new_contents
 	Database.add_node(node_type, selected_node)
@@ -95,7 +95,7 @@ func _on_InteractionPanel_node_added(new_name, new_contents):
 	update_menu()
 
 func _on_InteractionPanel_node_edited(new_name, new_contents):
-	print("Editing Node:", new_name, " / ", selected_node)
+#	print("Editing Node:", new_name, " / ", selected_node)
 	selected_node.name = new_name
 	selected_node.contents = new_contents
 	update_menu()

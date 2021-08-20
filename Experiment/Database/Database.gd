@@ -36,7 +36,7 @@ func add_node(key, node):
 	connect_ping(key, node)
 
 func get_dependencies(key):
-	print("Getting Dependencies")
+#	print("Getting Dependencies")
 	var struct:Dictionary = generator.structure
 	var result:Dictionary = {}
 	get_dep_rec(key, result, struct)

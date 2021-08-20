@@ -38,7 +38,7 @@ size_flags_horizontal = 3
 follow_focus = true
 scroll_horizontal_enabled = false
 
-[node name="SplitsGridContainer" type="MarginContainer" parent="item_panel/ScrollContainer"]
+[node name="SGContainer" type="MarginContainer" parent="item_panel/ScrollContainer"]
 margin_right = 956.0
 margin_bottom = 514.0
 size_flags_horizontal = 3

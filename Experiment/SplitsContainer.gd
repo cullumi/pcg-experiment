@@ -24,10 +24,14 @@ func align(equally_space:bool=false):
 		trim_splits(0)
 
 func align_children(equally_space:bool=false, size:float=rect_size.x):
+	print("\n", "[", self.name, "] ", "Align Children: ", Strings.to_names(children))
 	var i = 0
 	for child in children:
+		print("	Child: ", child.name)
+		print("	Splits: ", splits.size(), " (", i, ") ", splits)
 		if i >= splits.size():
 			add_split()
+		print("	Splits: ", splits.size(), " (", i, ") ", splits)
 		reparent_child(child, splits[i])
 		if equally_space:
 			var offset = size / children.size()
@@ -36,6 +40,7 @@ func align_children(equally_space:bool=false, size:float=rect_size.x):
 	trim_splits(i)
 
 func trim_splits(idx):
+	print("[", self.name, "] ", "Trim Splits to: ", idx)
 	if idx >= splits.size(): return
 	var freed_splits = splits.slice(idx, splits.size())
 	for split in freed_splits:
@@ -64,7 +69,10 @@ func reparent_child(child, new_parent):
 
 func add_to(child, new_parent):
 	print("Adding: ", child.name, " to ", new_parent.name)
-	new_parent.add_child(child)
+	if (new_parent != self):
+		new_parent.add_child(child)
+	else:
+		.add_child(child)
 	if not children.has(child): children.append(child)
 
 # Updates and Overrides

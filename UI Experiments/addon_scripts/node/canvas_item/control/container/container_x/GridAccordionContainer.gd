@@ -1,5 +1,7 @@
 extends ContainerX
 
+class_name GridAccordionContainer
+
 enum AXIS {HORIZONTAL=X_AXIS, VERTICAL=Y_AXIS}
 enum {MINOR=0, MAJOR=1}
 export (AXIS) var major_axis = AXIS.HORIZONTAL setget set_major, get_major
@@ -78,25 +80,33 @@ func remove(content:Control, realign:bool=true):
 
 # Insertion and Removal Helpers
 
+func update_mac_names():
+	for i in range(0, vacs.size()):
+		vacs[i].name = "VAC " + String(i)
+	for i in range(0, hacs.size()):
+		hacs[i].name = "HAC " + String(i)
+
 func add_mac(major:bool):
 	var mac:AccordionContainer = new_mac(major)
 	mac.lock = true
 	if major:
 		majors().insert(0, mac)
-#		stretch(mac, extents)
 		mac.set_extents(extents)
+		mac.lock = true
 		.add_child(mac)
 		.move_child(mac, 1 if use_backpanel else 0)
+		stretch(mac, mac.extents)
 	else:
 		minors().append(mac)
 		mac.set_extent(minor_axis, extents)
-#		stretch_axis(mac, minor_axis, extents.position[minor_axis], extents.size[minor_axis])
 		majors().front().add_child_below_node(minors().back(), mac)
+	update_mac_names()
 
 func remove_mac(mac:AccordionContainer):
 	mac.get_parent().remove_child(mac)
 	if is_major(mac): majors().erase(mac)
 	elif is_minor(mac): minors().erase(mac)
+	update_mac_names()
 
 func find_content_parent(content:Control) -> AccordionContainer:
 	var macs = minors()
@@ -107,23 +117,36 @@ func find_content_parent(content:Control) -> AccordionContainer:
 	return null
 
 func new_mac(major:bool):
-	if major: return new_major()
-	else: return new_minor()
-
-func new_major(): 
 	var new:AccordionContainer
-	match major_axis:
-		AXIS.HORIZONTAL:
-			new = HAccordionContainer.new()
-			new.name = "HAC"
-		AXIS.VERTICAL:
-			new = VAccordionContainer.new()
-			new.name = "VAC"
+	if major: new = new_major()
+	else: new = new_minor()
 	return new
 
-func new_minor(): match major_axis:
-		AXIS.VERTICAL: return HAccordionContainer.new()
-		AXIS.HORIZONTAL: return VAccordionContainer.new()
+func new_major() -> AccordionContainer:
+	var new:AccordionContainer
+	match major_axis:
+		AXIS.HORIZONTAL: new = new_h()
+		AXIS.VERTICAL: new = new_v()
+	new.use_backpanel = false
+	return new
+
+func new_minor() -> AccordionContainer:
+	var new:AccordionContainer
+	match major_axis:
+		AXIS.VERTICAL: new = new_h()
+		AXIS.HORIZONTAL: new = new_v()
+	new.match_content_depth = true
+	return new
+
+func new_h() -> HAccordionContainer:
+	var new = HAccordionContainer.new()
+	new.name = "HAC"
+	return new
+
+func new_v() -> VAccordionContainer:
+	var new = VAccordionContainer.new()
+	new.name = "VAC"
+	return new
 
 func majors(): return hacs if major_axis == AXIS.HORIZONTAL else vacs
 func minors(): return vacs if major_axis == AXIS.HORIZONTAL else hacs

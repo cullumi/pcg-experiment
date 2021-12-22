@@ -57,7 +57,8 @@ func remove_value(idx):
 	var edit = edits[idx]
 	values.remove(idx)
 	edits.remove(idx)
-	edit.queue_free()
+	if edit is Node:
+		edit.queue_free()
 	if (edits.size()-idx >= 1):
 		reset_binds_in_range(range(idx, edits.size()))
 

@@ -22,9 +22,14 @@ margin_right = 942.0
 margin_bottom = 38.0
 
 [node name="TagGrid" type="GridContainer" parent="HBoxContainer"]
+margin_right = 885.0
 margin_bottom = 20.0
+size_flags_horizontal = 3
+custom_constants/hseparation = 10
 columns = 6
 
 [node name="Dropdown" parent="HBoxContainer" instance=ExtResource( 2 )]
-margin_left = 4.0
-margin_right = 57.0
+margin_left = 889.0
+margin_right = 942.0
+
+[connection signal="item_selected" from="HBoxContainer/Dropdown" to="." method="_on_Dropdown_item_selected"]

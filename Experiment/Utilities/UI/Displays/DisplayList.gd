@@ -30,14 +30,14 @@ func clear_items():
 		separator.queue_free()
 	separators.clear()
 
-func add_items(names:Array, values:Array, scene, connections=[]):
+func add_items(names:Array, valuesets:Array, optionsets:Array, scene, connections=[]):
 	for i in range(0, names.size()):
-		add_item(names[i], values[i], scene, connections)
+		add_item(names[i], valuesets[i], optionsets[i], scene, connections)
 		add_separator()
 
-func add_item(item_name:String, value, scene:PackedScene, connections=[]):
+func add_item(item_name:String, values, options, scene:PackedScene, connections=[]):
 	var item = scene.instance()
-	item.initialize(item_name, value)
+	item.initialize(item_name, values, options[item_name])
 	items.append(item)
 	container.add_child(item)
 	for connection in connections:

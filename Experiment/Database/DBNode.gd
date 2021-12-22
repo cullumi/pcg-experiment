@@ -2,7 +2,7 @@ extends Node
 
 class_name DBNode
 
-var contents:Dictionary={}
+var contents:Dictionary={} # More or Less Depricated, theoretically for metadata?
 var results:Array
 var destroyed
 
@@ -19,6 +19,10 @@ func get_ping(key:String, reqs:Dictionary={}):
 func connect_ping(key:String, target:DBNode):
 # warning-ignore:return_value_discarded
 	connect("ping_"+key, target, "pinged");
+
+func disconnect_ping(key:String, target:DBNode):
+# warning-ignore:return_value_discarded
+	disconnect("ping_"+key, target, "pinged");
 
 func has_key(key:String):
 	return has_signal("ping_"+key)

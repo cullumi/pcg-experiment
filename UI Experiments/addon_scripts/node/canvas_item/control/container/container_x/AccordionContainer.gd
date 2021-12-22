@@ -344,7 +344,7 @@ func add_content_view(content:Control):
 	var content_view:ContentView = ContentView.new()
 	content_view.use_backpanel = use_backpanel
 	content_view.set_axis_ignore_max(strict_axis, true)
-	content_view.name = String(size)
+	content_view.name = "CV " + String(size)
 	.add_child(content_view)
 	content_views.append(content_view)
 	.remove_child(content)
@@ -355,7 +355,7 @@ func add_pull_bar():
 	var pull_bar = PullBar.new()
 	pull_bar.drag_self = false
 	pull_bar.set_axis_lock(strict_axis, true)
-	pull_bar.name = String(size-1) + "_" + String(size)
+	pull_bar.name = "PB " + String(size-1) + "->" + String(size)
 	.add_child_below_node(content_views[size-1], pull_bar)
 	pull_bars.append(pull_bar)
 	pull_bar.connect("clicked", self, "_pull_bar_clicked", [size-1])

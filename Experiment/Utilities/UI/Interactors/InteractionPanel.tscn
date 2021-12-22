@@ -57,8 +57,30 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "D"
 
+[node name="FreeObjects" type="Control" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 70.0
+margin_bottom = 405.0
+mouse_filter = 2
+
+[node name="NewButton" type="Button" parent="FreeObjects"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -22.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "N"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="name_changed" from="VBoxContainer/NodeDisplay" to="." method="_on_NodeDisplay_name_changed"]
+[connection signal="tag_deregistered" from="VBoxContainer/NodeDisplay" to="." method="_on_NodeDisplay_tag_deregistered"]
+[connection signal="tag_registered" from="VBoxContainer/NodeDisplay" to="." method="_on_NodeDisplay_tag_registered"]
 [connection signal="value_changed" from="VBoxContainer/NodeDisplay" to="." method="_on_NodeDisplay_value_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ActionButton" to="." method="_on_ActionButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/ResetButton" to="." method="_on_ResetButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/DeleteButton" to="." method="_on_DeleteButton_pressed"]
+[connection signal="pressed" from="FreeObjects/NewButton" to="." method="_on_NewButton_pressed"]

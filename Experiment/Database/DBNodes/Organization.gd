@@ -2,10 +2,10 @@ extends DBNode
 
 class_name Organization
 
-var o_contents = {
-	"org_id":[],
-	"ind_id":[],
-}
+#var o_contents = {
+#	"org_id":[],
+#	"ind_id":[],
+#}
 
 # warning-ignore:unused_signal
 signal ping_roles
@@ -17,8 +17,8 @@ var products:Array
 signal ping_people
 var members:Array
 
-func _init():
-	contents = o_contents
+#func _init():
+#	contents = o_contents
 
 func get_roles(reqs:Dictionary={}):
 	return ping("ping_roles", reqs, roles)

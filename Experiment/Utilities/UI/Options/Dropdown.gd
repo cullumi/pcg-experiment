@@ -27,11 +27,13 @@ func _ready():
 		populate()
 
 func populate():
-	if populated: return
-	populated = true
+	option_button.clear()
 	label.text = name
 	for op in options:
-		option_button.add_item(op)
+		option_button.get_popup().add_item(op)
+	option_button.selected = -1
+	if populated: return
+	populated = true
 	option_button.connect("item_focused", self, "_on_item_focused")
 	option_button.connect("item_selected", self, "_on_item_selected")
 	option_button.connect("pressed", self, "_on_pressed")
@@ -48,7 +50,8 @@ func get_option_index(option:String):
 	return -1
 
 func _on_pressed():
-	print("Option Pressed")
+	print("Option Menu Opened")
+	
 
 func _on_item_focused(_opt_idx:int):
 	print("Item Focused")

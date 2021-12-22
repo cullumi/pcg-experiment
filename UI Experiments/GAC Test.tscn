@@ -20,7 +20,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-use_custom_lock_length = true
 custom_lock_length = 500.0
 spacing = 10.0
 
@@ -135,3 +134,62 @@ match_content_depth = true
 [node name="InfoDisplay4" parent="HAccordionContainer/VAccordionContainer7" instance=ExtResource( 2 )]
 
 [node name="InfoDisplay5" parent="HAccordionContainer/VAccordionContainer7" instance=ExtResource( 2 )]
+
+[node name="Control" type="Control" parent="."]
+margin_left = 208.0
+margin_top = 604.0
+margin_right = 536.0
+margin_bottom = 1198.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HAccordionContainer2" type="Container" parent="Control"]
+margin_right = 712.0
+margin_bottom = 494.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VAccordionContainer" type="Container" parent="Control/HAccordionContainer2"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+match_content_depth = true
+
+[node name="InfoDisplay" parent="Control/HAccordionContainer2/VAccordionContainer" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="Control/HAccordionContainer2/VAccordionContainer" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="Control/HAccordionContainer2/VAccordionContainer" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay4" parent="Control/HAccordionContainer2/VAccordionContainer" instance=ExtResource( 2 )]
+
+[node name="VAccordionContainer2" type="Container" parent="Control/HAccordionContainer2"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+match_content_depth = true
+
+[node name="InfoDisplay" parent="Control/HAccordionContainer2/VAccordionContainer2" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="Control/HAccordionContainer2/VAccordionContainer2" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="Control/HAccordionContainer2/VAccordionContainer2" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay4" parent="Control/HAccordionContainer2/VAccordionContainer2" instance=ExtResource( 2 )]
+
+[node name="VAccordionContainer3" type="Container" parent="Control/HAccordionContainer2"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+match_content_depth = true
+
+[node name="InfoDisplay" parent="Control/HAccordionContainer2/VAccordionContainer3" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay2" parent="Control/HAccordionContainer2/VAccordionContainer3" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay3" parent="Control/HAccordionContainer2/VAccordionContainer3" instance=ExtResource( 2 )]
+
+[node name="InfoDisplay4" parent="Control/HAccordionContainer2/VAccordionContainer3" instance=ExtResource( 2 )]

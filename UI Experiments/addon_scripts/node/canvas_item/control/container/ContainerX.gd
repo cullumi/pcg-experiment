@@ -7,6 +7,7 @@ class_name ContainerX
 # Enums and Constants
 enum {X_AXIS, Y_AXIS}
 const NOMAX = -1
+enum {STRETCH=1}
 
 # Properties
 export (bool) var use_backpanel = true
@@ -54,6 +55,7 @@ func _resized():
 
 func add_backpanel():
 	backpanel = Panel.new()
+	backpanel.name = "Backpanel"
 	.add_child(backpanel)
 	.move_child(backpanel, 0)
 	update_backpanel()
@@ -66,10 +68,17 @@ func update_backpanel():
 
 
 # Extents
-func set_extents(new_extents:Rect2): extents = new_extents
-func set_extent(axis:int, new_extents:Rect2):
+func set_extents(new_extents:Rect2, stretch_to:bool=false):
+	extents = new_extents
+#	if stretch_to: 
+#		prints("Stretch", "[" + self.name + "]")
+#		stretch(self, extents)
+func set_extent(axis:int, new_extents:Rect2, stretch_to:bool=false):
 	extents.position[axis] = new_extents.position[axis]
 	extents.size[axis] = new_extents.size[axis]
+#	if stretch_to: 
+#		prints("Stretch", "[" + self.name + "]")
+#		stretch_axis(self, axis, extents.position[axis], extents.size[axis])	
 
 # Anchors
 
@@ -124,6 +133,8 @@ func set_y_filled(node:Control):
 # Stretching
 
 func stretch(node:Control, new_extents:Rect2, origins:Vector2=Vector2(), _debug=null):
+	if node.name == "HAC":
+		prints("Stretching HAC:", new_extents)
 	stretch_x(node, new_extents.position.x, new_extents.size.x, origins.x, _debug)
 	stretch_y(node, new_extents.position.y, new_extents.size.y, origins.y, _debug)
 

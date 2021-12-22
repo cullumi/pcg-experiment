@@ -100,6 +100,14 @@ func _on_InteractionPanel_node_edited(new_name, new_contents):
 	selected_node.contents = new_contents
 	update_menu()
 
+func _on_InteractionPanel_tag_registered(tag_key, tag_value):
+	var res = Database.get_ping(tag_key, {"name":tag_value})
+	selected_node.connect_ping(tag_key, res.first())
+
+func _on_InteractionPanel_tag_deregistered(tag_key, tag_value):
+	var res = selected_node.get_ping(tag_key, {"name":tag_value})
+	selected_node.disconnect_ping(tag_key, res.first())
+
 func _on_InteractionPanel_delete_node():
 	selected_node.destroy()
 	select_new()

@@ -3,7 +3,8 @@ extends VBoxContainer
 export (bool) var no_duplicates = true
 
 onready var name_label:Label = $Name
-onready var tag_grid:GridContainer = $HBoxContainer/TagGrid
+onready var tag_flowpanel:PanelContainer = $HBoxContainer/PanelContainer
+onready var tag_flow:Container = $HBoxContainer/PanelContainer/TagFlow
 onready var dropdown:Dropdown = $HBoxContainer/Dropdown
 
 signal tag_selected
@@ -86,12 +87,31 @@ func add_tag_item(tag:String):
 	item.add_child(tagDeregButton)
 	
 	tag_items.append(item)
-	tag_grid.add_child(item)
+	tag_flow.add_child(item)
+
+func adjust_columns():
+	var max_count = INF
+	var width:float = 0
+	var count:int = 0
+	var row:int = 0
+	var idx:int = 0
+	while idx < tag_items.size():
+		var item = tag_items[idx]
+		count += 1
+		width += item.rect_width
+		if width > tag_flowpanel.rect_width:
+			max_count = count-1
+#			tag_flow.columns = count-1
+		if count >= max_count:
+			width = 0
+			count = 0
+			continue
+		width += tag_flow.hseparation
 
 func delete_tag_item(index):
 	var item = tag_items[index]
 	tag_items.remove(index)
-	tag_grid.remove_child(item)
+	tag_flow.remove_child(item)
 	var tagNameButton = item.get_node("TagName")
 	tagNameButton.disconnect("pressed", self, "_on_tagItem_pressed")
 	item.queue_free()
@@ -101,7 +121,7 @@ func register_tag(tag:String):
 	remove_tag_option(tag)
 	registered_tags.append(tag)
 	add_tag_item(tag)
-	print("Tag Item Registered: ", tag)
+#	print("Tag Item Registered: ", tag)
 
 func deregister_tag(tag:String):
 	if (not registered_tags.has(tag)): return
@@ -109,7 +129,7 @@ func deregister_tag(tag:String):
 	var index = registered_tags.find(tag)
 	registered_tags.remove(index)
 	delete_tag_item(index)
-	print("Tag Item DeRegistered: ", tag)
+#	print("Tag Item DeRegistered: ", tag)
 
 # Signal emission
 

@@ -3,9 +3,9 @@ extends PanelContainer
 class_name DisplayPanel
 
 export (PackedScene) var nd_scene
-export (int) var grid_width = 2
+#export (int) var grid_width = 2
 
-onready var grid = $item_panel/ScrollContainer/GridContainer
+onready var flow = $item_panel/ScrollContainer/FlowContainer
 #onready var grid = $item_panel/ScrollContainer/SGContainer
 onready var label = $Label
 
@@ -15,9 +15,6 @@ signal nodes_deselected
 var node_displays:Array
 var selected:int = -1
 enum DESELECT {NODE=-1, ALL=-2}
-
-func _ready():
-	grid.columns = grid_width
 
 func display_string(string:String):
 	label.text = string
@@ -39,7 +36,7 @@ func display_nodes(nodes:Array):
 func display_node(node, idx:int=-1):
 	var node_display = nd_scene.instance()
 	node_display.name = node.name
-	grid.add_child(node_display)
+	flow.add_child(node_display)
 	node_displays.append(node_display)
 	node_display.initialize(false)
 	node_display.set_node(node)

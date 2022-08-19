@@ -5,7 +5,13 @@ class_name DisplayList
 export (bool) var horizontal = false
 export (int) var boarder_space = 5
 
-var container:BoxContainer
+#var container:BoxContainer
+var container:Container
+
+var vBoxType = VShrinkBoxContainer
+var hBoxType = HShrinkBoxContainer
+#var vBoxType = VFlowContainer
+#var hBoxType = HFlowContainer
 
 var items=[]
 var separators=[]
@@ -13,7 +19,7 @@ var separators=[]
 enum {SIGNAL, TARGET, METHOD, BINDS}
 
 func _init():
-	container = HShrinkBoxContainer.new() if horizontal else VShrinkBoxContainer.new()
+	container = hBoxType.new() if horizontal else vBoxType.new()
 	container.name = "BoxContainer"
 	container.size_flags_horizontal = SIZE_EXPAND_FILL
 	container.size_flags_vertical = SIZE_FILL

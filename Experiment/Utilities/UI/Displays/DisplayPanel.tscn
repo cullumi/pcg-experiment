@@ -12,11 +12,7 @@ focus_mode = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 nd_scene = ExtResource( 2 )
-grid_width = 1
 
 [node name="item_panel" type="PanelContainer" parent="."]
 margin_left = 7.0
@@ -46,13 +42,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 3 )
 
-[node name="GridContainer" type="GridContainer" parent="item_panel/ScrollContainer"]
+[node name="FlowContainer" type="HFlowContainer" parent="item_panel/ScrollContainer"]
 margin_right = 956.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
-columns = 3
 
-[node name="DBNodeDisplay" parent="item_panel/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+[node name="DBNodeDisplay" parent="item_panel/ScrollContainer/FlowContainer" instance=ExtResource( 2 )]
 visible = false
 margin_left = 0.0
 margin_top = 0.0

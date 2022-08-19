@@ -21,12 +21,18 @@ margin_top = 18.0
 margin_right = 942.0
 margin_bottom = 38.0
 
-[node name="TagGrid" type="GridContainer" parent="HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
 margin_right = 885.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
+
+[node name="TagFlow" type="HFlowContainer" parent="HBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 878.0
+margin_bottom = 13.0
+size_flags_horizontal = 3
 custom_constants/hseparation = 10
-columns = 6
 
 [node name="Dropdown" parent="HBoxContainer" instance=ExtResource( 2 )]
 margin_left = 889.0

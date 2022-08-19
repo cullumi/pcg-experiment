@@ -17,9 +17,6 @@ focus_mode = 1
 size_flags_horizontal = 11
 size_flags_vertical = 3
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 display_content_scene = ExtResource( 2 )
 tag_scene = ExtResource( 5 )
 
